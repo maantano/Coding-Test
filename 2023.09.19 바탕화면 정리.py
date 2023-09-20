@@ -9,4 +9,8 @@ def solution(wallpaper):
             if wallpaper[i][j] == "#":
                 a.append(i)
                 b.append(j)
+    print([min(a), min(b), max(a) + 1, max(b) + 1])
     return [min(a), min(b), max(a) + 1, max(b) + 1]
+
+
+solution(wallpaper)
