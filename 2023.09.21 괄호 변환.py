@@ -57,7 +57,6 @@ def solution(p):
 			else:
 				u[i] = '('
 		answer += "".join(u)
-	print(answer)
 	return answer
 
 
