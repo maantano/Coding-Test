@@ -24,22 +24,6 @@ path = [
 ]
 
 from collections import deque
-
-# def solution(x,y):
-# 	for i in range(n):
-# 		for j in range(n):
-# 			for p in range(4):
-# 				move_x,move_y= path[p]
-# 				newX = i + move_x
-# 				newY = j + move_y
-# 				if newX <=-1 or newX >= n or newY <= -1 or newY >= n:
-# 					print('g[newX][newY] ====>',g[i][j])
-# 					continue
-# 				if g[newX][newY] == 1:
-# 					g[newX][newY] = g[i][j] + 1
-# 	print(g)
-# solution(0,0)
-
 def bfs(g,x,y):
 	n = len(g)
 	q = deque()
