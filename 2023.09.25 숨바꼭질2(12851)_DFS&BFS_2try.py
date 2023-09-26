@@ -15,7 +15,7 @@ def bfs(x,y):
 		if x == y:
 			# print(Max[x])
 			way+=1
-			count+=1
+			# count =
 			continue
 		for i in (x-1,x+1,x*2):
 			if Max[i] == 0 or Max[i] == Max[x] + 1:
