@@ -9,8 +9,6 @@ for i in range(n):
 	for j in range(n):
 		if arr[i][j] > maxNum:
 			maxNum = arr[i][j]
-print('maxNum =====>',maxNum)
-
 move = [
 	[1,0],
 	[-1,0],

@@ -23,7 +23,7 @@ def bfs(x,y):
 		for i in range(4):
 			newX = x + dx[i]
 			newY = y + dy[i]
-			if 0<= newX < n and 0<= newY < m:
+			if 0 <= newX < n and 0 <= newY < m:
 				if not arr[newX][newY]:
 					sea+=1
 				elif arr[newX][newY] and not visited[newX][newY]:
@@ -36,6 +36,7 @@ def bfs(x,y):
 	return 1
 
 ice = []
+
 for i in range(n):
 	for j in range(m):
 		if arr[i][j]:
