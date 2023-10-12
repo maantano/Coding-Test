@@ -18,27 +18,6 @@
 # 7 4 8 4 8 3 4
 # 0
 
-
-# dx = [-1,0,1,0]
-# dy = [0,-1,0,1]
-
-# from collections import deque
-# def bfs():
-
-# 	while True:
-# 		n = int(input())
-# 		if n == 0:
-# 			return
-# 		arr = []
-# 		for i in range(n):
-# 			arr[i] = list(map(int,input().split()))
-# 		count = arr[0][0]
-# 		q = deque()
-# 		q.append(0)
-# 		while q:
-
-
-
 import sys
 import heapq
 input = sys.stdin.readline

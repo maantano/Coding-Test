@@ -52,10 +52,8 @@ def nQ(x):
 	else:
 		for i in range(n):
 			row[x] = i
-			print(row)
 			if chkQ(x):
 				nQ(x+1)
-		print('----------------------')
 
 nQ(0)
 print(result)
