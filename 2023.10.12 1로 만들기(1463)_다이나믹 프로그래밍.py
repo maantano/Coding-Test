@@ -37,5 +37,4 @@ for i in range(2,n+1):
 		visited[i] = min(visited[i],visited[i//2]+1)
 	if i % 3 == 0:
 		visited[i] = min(visited[i],visited[i//3]+1)
-	print(visited)
 print(visited[n])

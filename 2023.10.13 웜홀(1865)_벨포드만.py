@@ -28,7 +28,7 @@ input = sys.stdin.readline
 INF = int(1e9)
 
 tc = int(input())
-g = []
+
 
 
 def bf(start):
@@ -48,7 +48,7 @@ def bf(start):
 
 for i in range(tc):
 	n,m,w = map(int,input().split())
-
+	g = []
 	for _ in range(m):
 		s, e, t = map(int, input().split())
 		g.append((s, e, t))
@@ -56,9 +56,9 @@ for i in range(tc):
 	for _ in range(w):
 		s,e,t = map(int,input().split())
 		g.append((s,e,-t))
+
+
 	key = bf(1)
-
-
 	if key:
 		print('YES')
 	else:
