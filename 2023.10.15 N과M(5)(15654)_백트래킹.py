@@ -18,9 +18,4 @@ def dfs(d,i):
 		dfs(d+1,i+1)
 		answer.pop()
 
-
-
-
-
-
 dfs(0,0)
