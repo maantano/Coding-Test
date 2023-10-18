@@ -18,7 +18,6 @@ def bt(idx,smallList):
 			if smallList:
 				if smallList[-1] >= arr[i]:
 					continue
-
 			smallList.append(arr[i])
 			visited[i] = 1
 			bt(idx+1,smallList)
