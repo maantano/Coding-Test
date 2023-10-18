@@ -28,7 +28,7 @@ def bfs(x,y,xf,yf):
 	q = deque([(x,y)])
 	visited[x][y] = 1
 	cnt = 0
-	lsx,lsy =0,0
+	# lsx,lsy =0,0
 	while q:
 		x,y = q.popleft()
 		for i in range(4):
@@ -36,17 +36,19 @@ def bfs(x,y,xf,yf):
 			ny = y + dy[i]
 			nxf = xf + dx[i]
 			nyf = yf + dy[i]
-			if 0<= nx < n and 0<= ny <m and 0<= nxf < n and 0<= nyf < m:
-				arr[nxf][nyf] = 'F'
+			if 0<= nx < n and 0<= ny <m:
 				if arr[nx][ny] != '#' and arr[nx][ny] != 'F' and not visited[nx][ny]:
 					visited[nx][ny] = 1
 					q.append((nx,ny))
 					cnt += 1
+			if 0<= nxf < n and 0<= nyf < m:
+				arr[nxf][nyf] = 'F'
+
 		lsx,lsy = x,y
-	if arr[lsx][lsy] == '.':
-		print(cnt)
-	else:
-		print('IMPOSSIBLE')
+		if lsx == 4 or lsy == 4:
+			print(cnt)
+			exit()
+	print('IMPOSSIBLE')
 
 import sys
 input = sys.stdin.readline
@@ -56,6 +58,4 @@ visited = [[0]*m for i in range(n)]
 arr = [list(map(str,input().rstrip())) for _ in range(n)]
 x,y = start(arr)
 xf,yf = startF(arr)
-
 bfs(x,y,xf,yf)
-
