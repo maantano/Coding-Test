@@ -6,8 +6,6 @@ arr = list(map(int,input().split()))
 arr.sort()
 answer= []
 
-# visited = [0] * n
-
 def bt(idx,n,m):
 	if idx == m:
 		print(*answer)
