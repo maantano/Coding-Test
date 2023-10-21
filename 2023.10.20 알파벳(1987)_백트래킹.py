@@ -61,7 +61,6 @@
 # 			ny = y + dy[i]
 # 			if 0<= nx < r and 0<= ny < c and arr[nx][ny] not in ans:
 # 				q.append([nx,ny,ans+arr[nx][ny]])
-# 				print(len(ans))
 # 				answer=max(answer,len(ans)+1)
 
 # bfs(0,0)
