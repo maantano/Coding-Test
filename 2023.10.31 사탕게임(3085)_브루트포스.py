@@ -1,3 +1,4 @@
+
 import sys
 input = sys.stdin.readline
 
@@ -15,6 +16,7 @@ def chk(arr):
 			else:
 				cnt = 1
 			mCnt = max(mCnt,cnt)
+		cnt = 1
 		for j in range(1,n):
 			if arr[j][i] == arr[j-1][i]:
 				cnt+=1
