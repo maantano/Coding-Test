@@ -71,7 +71,7 @@ def bt(px,py,idx,sum):
 			answer = sum
 		return
 	for x in range(px,n):
-		for y in range(py if x == px else 0,m):
+		for y in range(py if x == px else 0 ,m):
 			if visited[x][y]:
 				continue
 			ok = True
