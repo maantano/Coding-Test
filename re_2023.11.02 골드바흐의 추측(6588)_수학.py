@@ -10,7 +10,6 @@ def get_decimal(n):
 
 def solution():
 	decimal = get_decimal(1000001)
-	print(decimal)
 	while True:
 		n = int(input())
 		if n == 0:
