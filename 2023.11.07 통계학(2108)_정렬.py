@@ -14,32 +14,17 @@
 
 import sys
 input = sys.stdin.readline
-
-# 5
-# 1
-# 3
-# 8
-# -2
-# 2
-
 n = int(input())
 arr = sorted([int(input().rstrip()) for _ in range(n)])
 print(round(sum(arr) / len(arr)))
 print(arr[len(arr)//2])
 
-
-
-# d = {v:0 for i,v  in enumerate(arr)}
 d = {}
 for i in arr:
 	if i in d:
 		d[i] +=1
 	else:
 		d[i] = 1
-	# if d.get(i) == 0:
-	# 	d[i] = 1
-	# else:
-	# 	d[i] += 1
 
 mx = max(d.values())
 mx_d = []
