@@ -11,6 +11,8 @@ def bt(idx,smalList):
 		return
 
 	for i in arr:
+
+
 		bt(idx+1,smalList+[i])
 
 bt(0,[])

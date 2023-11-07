@@ -1,5 +1,4 @@
 import sys
-from itertools import combinations
 input = sys.stdin.readline
 
 n = int(input().rstrip())
@@ -10,8 +9,8 @@ ans = sys.maxsize
 def is_it():
 	global ans
 	start,link = 0,0
-	for i in range(n):
-		for j in range(n):
+	for i in range(n-1):
+		for j in range(i+1,n):
 			if visited[i] and visited[j]:
 				start += stats[i][j]
 			elif not visited[i] and not visited[j]:

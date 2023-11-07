@@ -15,46 +15,37 @@
 
 
 
-# import sys
-# sys.setrecursionlimit(10**6)
-# input = sys.stdin.readline
+import sys
+sys.setrecursionlimit(10**6)
+input = sys.stdin.readline
 
-# k = int(input())
+k = int(input())
 
-# def DFS(start,visited,g,group):
-# 	visited[start] = group
-# 	for v in g[start]:
-# 		if visited[v] == 0:
-# 			result = DFS(v,visited,g,-group)
-# 			if not result:
-# 				return False
-# 		else:
-# 			if visited[v] == group:
-# 				return False
-# 	return True
+def DFS(start,visited,g,group):
+	visited[start] = group
+	for v in g[start]:
+		if visited[v] == 0:
+			result = DFS(v,visited,g,-group)
+			if not result:
+				return False
+		else:
+			if visited[v] == group:
+				return False
+	return True
 
-# for _ in range(k):
-# 	V,E= map(int,input().split())
-# 	visited = [0] * (V+1)
-# 	g = [[] for _ in range(V+1)]
+for _ in range(k):
+	V,E= map(int,input().split())
+	visited = [0] * (V+1)
+	g = [[] for _ in range(V+1)]
 
-# 	for i in range(E):
-# 		a,b = map(int,input().split())
-# 		g[a].append(b)
-# 		g[b].append(a)
+	for i in range(E):
+		a,b = map(int,input().split())
+		g[a].append(b)
+		g[b].append(a)
 
-# 	for i in range(1,V+1):
-# 		if visited[i] == 0:
-# 			result = DFS(i,visited,g,1)
-# 			if not result:
-# 				break
-# 	print('YES' if result else 'NO')
-
-
-
-
-
-
-a = '12 20'
-print(a.split(' '))
-print(a.split())
+	for i in range(1,V+1):
+		if visited[i] == 0:
+			result = DFS(i,visited,g,1)
+			if not result:
+				break
+	print('YES' if result else 'NO')

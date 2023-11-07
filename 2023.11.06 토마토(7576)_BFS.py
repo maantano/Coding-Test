@@ -26,8 +26,6 @@ def bfs():
 				if not arr[nx][ny]:
 					q.append((nx,ny))
 					arr[nx][ny] = arr[x][y] + 1
-		print(arr)
-
 
 for i in range(m):
 	for j in range(n):
