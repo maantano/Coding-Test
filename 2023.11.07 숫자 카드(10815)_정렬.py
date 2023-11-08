@@ -12,8 +12,6 @@ d2 = {v:0 for idx,v in enumerate(a2)}
 for key,cnt in d1.items():
 	if key in d2:
 		d2[key] += 1
-
-# for key,cnt in d2.items():
 print(*d2.values(),sep=' ')
 
 
