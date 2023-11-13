@@ -60,7 +60,6 @@ for i in range(t):
 		if ( dijs[g] + dijg[h] + dijh[i] == dijs[i] ) or ( dijs[h] + dijh[g]+ dijg[i] == dijs[i] ):
 			answer.append(i)
 	answer.sort()
-	print('===============')
 	print(*answer)
 
 
