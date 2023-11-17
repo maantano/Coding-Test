@@ -26,14 +26,6 @@ def bfs(start):
 				q.append(i)
 	return cnt
 
-# for i in range(1,n+1):
-# 	answer.append(bfs(i))
-# maxCnt = max(answer)
-# for j in range(len(answer)):
-# 	if answer[j] == maxCnt:
-# 		print(j+1,end=' ')
-
-
 for i in range(1,n+1):
 	cnt = bfs(i)
 	if maxCnt < cnt:
