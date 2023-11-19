@@ -14,9 +14,6 @@ def solution(numbers):
 
 	return answer
 
-
-
-
 print(solution(numbers))
 # import sys
 # input = sys.stdin.readline
