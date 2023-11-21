@@ -9,23 +9,23 @@ pickups = [0, 3, 0, 4, 0]
 
 
 def solution(cap, n, deliveries, pickups):
+	answer=  0
+
 	deliveries = deliveries[::-1]
 	pickups = pickups[::-1]
-	answer = 0
 
-	have_to_deli = 0
-	have_to_pick = 0
+	to_d = 0
+	to_p = 0
 
 	for i in range(n):
-		have_to_deli += deliveries[i]
-		have_to_pick += pickups[i]
+		to_d += deliveries[i]
+		to_p += pickups[i]
 
-		while have_to_deli > 0 or have_to_pick > 0:
-			have_to_deli -= cap
-			have_to_pick -= cap
-			answer += (n - i) * 2
-	print(answer)
+
+		while to_d > 0 or to_p > 0:
+			to_p -= cap
+			to_d -= cap
+			answer += (n-i) * 2
+
 	return answer
-
-
 solution(cap, n, deliveries, pickups)
