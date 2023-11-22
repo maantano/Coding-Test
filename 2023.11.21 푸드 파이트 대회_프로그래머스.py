@@ -14,6 +14,6 @@ def solution(k, m, score):
 	t = len(score) // m
 	for i in range(t):
 		answer +=  min(score[i*m:i*m+m]) * m
-	return answer
 
+	return answer
 solution(k, m, score)
