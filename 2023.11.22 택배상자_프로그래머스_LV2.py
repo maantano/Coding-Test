@@ -20,7 +20,6 @@ def solution(order):
 			tmpS.append(i)
 	while order:
 		target = order.popleft()
-		# print('target , dq[0], tmpS[-1]  ',target , dq[0], tmpS[-1])
 		if target == dq[0]:
 			dq.popleft()
 			answer+=1
@@ -28,15 +27,24 @@ def solution(order):
 			tmpS.pop()
 			answer+=1
 		else:
-			print('target , dq[0], tmpS[-1]  ',target , dq[0], tmpS[-1])
 			break
-		# else:
-		# 	print(answer)
-	print(answer)
 	return answer
-			# break
-			# return answer
 
+
+
+
+def solution(order):
+	assist = []
+	i = 1
+	cnt = 0
+	while i != len(order)+1:
+		assist.append(i)
+		while assist and assist[-1] == order[cnt]:
+			cnt += 1
+			assist.pop()
+
+		i += 1
+	return cnt
 
 
 
