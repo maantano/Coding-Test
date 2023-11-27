@@ -10,16 +10,19 @@ for floor in range(257):
 
 	for i in range(N):
 		for j in range(M):
-
 			if field[i][j] > floor :
 				exceed_block += field[i][j] - floor
 			else :
 				lack_block += floor - field[i][j]
 
-	if exceed_block + B >= lack_block :
+	if exceed_block + B >= lack_block:
 		if (exceed_block * 2) + lack_block <= answer:
+			print('(exceed_block * 2) + lack_block=====>',(exceed_block * 2), lack_block)
 			answer = (exceed_block * 2) + lack_block
 			idx = floor
+
+	print('exceed_block,lack_block ===>',exceed_block,lack_block)
+	print('idx,floor,answer ===>',idx,floor,answer)
 
 
 print(answer, idx)
