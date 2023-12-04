@@ -16,7 +16,7 @@ for i in range(length):
 	if string[i:] == reversed_string[:length - i]:
 		print(length + i)
 		break
-
+# abdfhdyrbdbsdfghjkllkjhgfds
 
 # # while True:
 # # b = 'abab'

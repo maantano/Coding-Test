@@ -17,12 +17,8 @@ for floor in range(257):
 
 	if exceed_block + B >= lack_block:
 		if (exceed_block * 2) + lack_block <= answer:
-			print('(exceed_block * 2) + lack_block=====>',(exceed_block * 2), lack_block)
 			answer = (exceed_block * 2) + lack_block
 			idx = floor
 
-	print('exceed_block,lack_block ===>',exceed_block,lack_block)
-	print('idx,floor,answer ===>',idx,floor,answer)
-
-
 print(answer, idx)
+
