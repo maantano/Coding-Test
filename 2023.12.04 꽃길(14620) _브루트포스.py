@@ -2,8 +2,8 @@ import sys
 input = sys.stdin.readline
 sys.setrecursionlimit(10**6)
 
-n = int(input())   # 화단 한 변 길이
-garden = [list(map(int, input().split())) for _ in range(n)]   # 화단 지점당 가격
+n = int(input())
+garden = [list(map(int, input().split())) for _ in range(n)]
 
 def check(i, j, visited):
 	for dx, dy in (0, 1), (0, -1), (1, 0), (-1, 0), (0, 0):
