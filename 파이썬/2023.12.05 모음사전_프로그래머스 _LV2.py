@@ -29,7 +29,6 @@ def solution2(word):
 
 	for i in range(len(word)-1,-1,-1):
 		idx = dic.index(word[i])
-		print(idx)
 		for j in range(5-i):
 			answer += li[j]*idx
 		answer+=1
