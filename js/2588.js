@@ -12,11 +12,13 @@
 // console.log(answer);
 
 const fs = require("fs");
-// const [num1, num2]=fs.readFileSync('/dev/stdin').toString().split('\n').map(Number);
-const num1 = 475;
-const num2 = 385;
+const [num1, num2] = fs
+  .readFileSync("/dev/stdin")
+  .toString()
+  .split("\n")
+  .map(Number);
+
 const oneNum = num2 % 10;
-console.log("(num2%100) ====>", num2 % 100);
 const tenNum = Math.floor((num2 % 100) / 10);
 const hundredNum = Math.floor(num2 / 100);
 
