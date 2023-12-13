@@ -303,30 +303,107 @@
 
 // keymap = ["ABACD", "BCEFD"];
 // targets = ["ABCD", "AABB"];
-keymap = ["AA"];
-targets = ["B"];
-result = [9, 4];
-function solution(keymap, targets) {
-  let keyDic = {};
-  let answer = [];
-  for (let i = 0; i < keymap.length; i++) {
-    keymap[i].split("").forEach((el, idx) => {
-      if (el in keyDic) {
-        if (keyDic[el] > idx) keyDic[el] = idx + 1;
-      } else {
-        keyDic[el] = idx + 1;
-      }
-    });
+// keymap = ["AA"];
+// targets = ["B"];
+// result = [9, 4];
+// function solution(keymap, targets) {
+//   let keyDic = {};
+//   let answer = [];
+//   for (let i = 0; i < keymap.length; i++) {
+//     keymap[i].split("").forEach((el, idx) => {
+//       if (el in keyDic) {
+//         if (keyDic[el] > idx) keyDic[el] = idx + 1;
+//       } else {
+//         keyDic[el] = idx + 1;
+//       }
+//     });
+//   }
+//   for (let i = 0; i < targets.length; i++) {
+//     let tmp = 0;
+//     targets[i].split("").forEach((el, idx) => {
+//       if (el in keyDic) tmp += keyDic[el];
+//       else tmp -= 1;
+//     });
+//     if (tmp) answer.push(tmp);
+//   }
+//   if (answer.length) return answer;
+//   else return [-1];
+// }
+// solution(keymap, targets);
+
+// function solution(keymap, targets) {
+//   const answer = [];
+//   const map = new Map();
+
+//   for (const key of keymap) {
+//     for (let i = 0; i < key.length; i++) {
+//       if (!map.has(key[i]) || i + 1 < map.get(key[i])) map.set(key[i], i + 1);
+//     }
+//   }
+
+//   for (const target of targets) {
+//     let count = 0;
+//     for (let i = 0; i < target.length; i++) {
+//       count += map.get(target[i]);
+//     }
+//     answer.push(count || -1);
+//   }
+
+//   return answer;
+// }
+
+// #카드 뭉치 ####################################################################################
+
+// cards1 = ["i", "drink", "water"];
+// cards2 = ["want", "to"];
+// goal = ["i", "want", "to", "drink", "water"];
+// result = "Yes";
+
+cards1 = ["i", "water", "drink"];
+cards2 = ["want", "to"];
+goal = ["i", "want", "to", "drink", "water"];
+// result = "Yes";
+// function solution(cards1, cards2, goal) {
+//   let c1 = cards1.shift();
+//   let c2 = cards2.shift();
+//   let c3 = goal.shift();
+//   if (
+//     cards1.length + cards2.length < goal.length ||
+//     cards1.length + cards2.length > goal.length
+//   )
+//     return "No";
+//   while (cards1.length > 0 || cards2.length > 0) {
+//     if (c1 === c3) {
+//       c1 = cards1.shift();
+//       c3 = goal.shift();
+//     } else if (c2 === c3) {
+//       c2 = cards2.shift();
+//       c3 = goal.shift();
+//     } else {
+//       return "No";
+//     }
+//   }
+//   return "Yes";
+// }
+// console.log(solution(cards1, cards2));
+
+function checkCards(cards, goal) {
+  const cardsFilteredByGoal = goal.filter((item, index) =>
+    cards.includes(item)
+  );
+  const cardFilteredByIndex = cardsFilteredByGoal.filter(
+    (item, index) => item === cards[index]
+  );
+  if (cardFilteredByIndex.length !== cardsFilteredByGoal.length) {
+    return false;
   }
-  for (let i = 0; i < targets.length; i++) {
-    let tmp = 0;
-    targets[i].split("").forEach((el, idx) => {
-      if (el in keyDic) tmp += keyDic[el];
-      else tmp -= 1;
-    });
-    if (tmp) answer.push(tmp);
-  }
-  if (answer.length) return answer;
-  else return [-1];
+  return true;
 }
-solution(keymap, targets);
+
+function solution(cards1, cards2, goal) {
+  if (checkCards(cards1, goal) && checkCards(cards2, goal)) {
+    return "Yes";
+  }
+
+  return "No";
+}
