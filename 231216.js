@@ -1,34 +1,26 @@
 // # 덩치 7568
-// let n = 5;
-// let arr = [
-//   [55, 185],
-//   [58, 183],
-//   [88, 186],
-//   [60, 175],
-//   [46, 155],
-// ];
-// let fs = require("fs");
-// let input = fs.readFileSync("/dev/stdin")
-// 	.toString()
-// 	.trim()
-// 	.split("\n")
-// 	.map((el) => el.split(" ").map((el) => Number(el)));
-// let [n,...arr]=input
 
+// let fs = require("fs");
+// let input = fs
+//   .readFileSync("/dev/stdin")
+//   .toString()
+//   .trim()
+//   .split("\n")
+//   .map((el) => el.split(" ").map((el) => Number(el)));
+// let [n, ...arr] = input;
 // answer = [];
 // for (let i = 0; i < n; i++) {
 //   let grade = 1;
-//   for (let j = 0; j < n; j++) {
+//   for (j = 0; j < n; j++) {
 //     if (i !== j) {
 //       if (arr[i][0] < arr[j][0] && arr[i][1] < arr[j][1]) grade++;
 //     }
 //   }
 //   answer.push(grade);
 // }
-// console.log(answer.join(' '));
+// console.log(answer.join(" "));
 
 // # 체스판 다시 칠하기 1018
-
 // let fs = require("fs");
 // let input = fs.readFileSync("/dev/stdin").toString().trim().split("\n");
 
@@ -98,22 +90,13 @@
 
 // 암호 만들기 1759
 
-// const fs = require('fs');
-// const filePath = process.platform === 'linux' ? '/dev/stdin' : 'input.txt';
-// let input = fs.readFileSync(filePath).toString().trim().split('\n');
-
-// const [L, C] = input.shift().split(' ').map(Number);
-// const alphabet = input.shift().split(' ').sort();
-// const vowel = ['a', 'e', 'i', 'o', 'u'];
-
-// const n = 4;
-// const m = 6;
-// const arr = ["a", "t", "c", "i", "s", "w"];
-// arr.sort((a, b) => a - b);
+// const fs = require("fs");
+// let input = fs.readFileSync("/dev/stdin").toString().trim().split("\n");
+// const [n, m] = input.shift().split(" ").map(Number);
+// const arr = input.shift().split(" ").sort();
 // const vowel = ["a", "e", "i", "o", "u"];
 // answer = [];
-
-// function backTracking(str, startIndex) {
+// function bt(idx, str) {
 //   if (str.length === n) {
 //     let cnt = 0;
 //     for (let i = 0; i < str.length; i++) {
@@ -126,21 +109,19 @@
 //     }
 //     return;
 //   } else {
-//     for (let i = startIndex; i < m; i++) {
-//       backTracking(str + arr[i], i + 1);
+//     for (let i = idx; i < m; i++) {
+//       bt(i + 1, str + arr[i]);
 //     }
 //   }
 // }
-// backTracking("", 0);
+// bt(0, "");
 // console.log(answer.join("\n"));
 
 // #  N-QUEENS 9663
-
-// let N = 8;
-
+// let n = 8;
 // let answer = 0;
-// let row = Array.from({ length: N + 1 }, () => 0);
-// console.log(row);
+// let row = Array.from({ length: n + 1 }, () => 0);
+
 // function chk(L) {
 //   for (let i = 0; i < L; i++) {
 //     if (Math.abs(row[L] - row[i]) === L - i || row[L] === row[i]) return false;
@@ -149,10 +130,10 @@
 // }
 
 // function dfs(L) {
-//   if (L === N) {
+//   if (L === n) {
 //     answer++;
 //   } else {
-//     for (let i = 0; i < N; i++) {
+//     for (let i = 0; i < n; i++) {
 //       row[L] = i;
 //       if (chk(L)) dfs(L + 1);
 //     }
@@ -166,6 +147,8 @@
 // const n = 2;
 // const arr = [5, 6];
 // let unitl = [0, 0, 1, 0];
+// let input = require('fs').readFileSync('/dev/stdin').toString().trim().split('\n').map((el)=>el.split(' ').map((el)=>Number(el)))
+// let [n,arr,unitl] = input
 
 // const cal = [
 //   (a, b) => a + b,
@@ -173,25 +156,21 @@
 //   (a, b) => a * b,
 //   (a, b) => parseInt(a / b),
 // ];
-
 // let max = Number.MIN_SAFE_INTEGER;
 // let min = Number.MAX_SAFE_INTEGER;
-
-// function dfs(total, idx) {
+// const dfs = (total, idx) => {
 //   if (idx === n - 1) {
-//     min = Math.min(min, total);
-//     max = Math.max(max, total);
+//     min = Math.min(total, min);
+//     max = Math.max(total, max);
 //   } else {
-//     for (let i = 0; i < unitl.length; i++) {
+//     for (let i = 0; i < 4; i++) {
 //       if (unitl[i] === 0) continue;
-//       else {
-//         unitl[i]--;
-//         dfs(cal[i](total, arr[idx + 1]), idx + 1);
-//         unitl[i]++;
-//       }
+//       unitl[i]--;
+//       dfs(cal[i](total, arr[idx + 1]), idx + 1);
+//       unitl[i]++;
 //     }
 //   }
-// }
+// };
 // dfs(arr[0], 0);
 // console.log(max ? max : 0);
 // console.log(min ? min : 0);
@@ -210,68 +189,42 @@ city = [
 
 const house = [];
 const chicken = [];
+const check = new Array(chicken.length).fill(false);
+let answer = Infinity;
+for (let i = 0; i < n; i++) {
+  for (let j = 0; j < n; j++) {
+    if (city[i][j] == 1) house.push([i, j]);
+    else if (city[i][j] == 2) chicken.push([i, j]);
+  }
+}
 
-// dx = [-1, 1, 0, 0];
-// dy = [0, 0, -1, 1];
+const getMinDistance = () => {
+  let sum = 0;
+  house.forEach(([hx, hy]) => {
+    let min = Infinity;
+    chicken.forEach((_, idx) => {
+      if (check[idx] === true) {
+        const [cx, cy] = chicken[idx];
+        min = Math.min(min, Math.abs(hx - cx) + Math.abs(hy - cy));
+      }
+    });
+    sum += min;
+  });
+  return sum;
+};
 
-// let min = Number.MAX_SAFE_INTEGER;
-// let visited = Array.from({ length: n }, () => Array(n).fill(0));
-// console.log(visited);
-// function dfs(idx,total){
-// 	if (idx == m){
-// 		min = total
-// 		return
-// 	}else{
-// 		for(let i =0;i<n;i++){
-// 			for(let j =0; j< n; j++){
-
-// 			}
-// 		}
-// 		if(arr[i][j] === 2){
-// 			arr[i][j] = 0
-// 			dfs(idx+1,total)
-// 			arr[i][j] = 2
-// 		}
-// 	}
-
-// }
-// for (let i = 0; i < n; i++) {
-//   for (let j = 0; j < n; j++) {
-//     if (city[i][j] === 1) house.push([i, j]);
-//     else if (city[i][j] === 2) chicken.push([i, j]);
-//   }
-// }
-
-// const getMinDistance = () => {
-//   let sum = 0;
-//   house.forEach(([hx, hy]) => {
-//     let min = Infinity;
-//     chicken.forEach((_, index) => {
-//       if (check[index] === true) {
-//         const [cx, cy] = chicken[index];
-//         min = Math.min(min, Math.abs(hx - cx) + Math.abs(hy - cy));
-//       }
-//     });
-//     sum += min;
-//   });
-//   return sum;
-// };
-
-// const check = new Array(chicken.length).fill(false);
-// let answer = Infinity;
-
-// const DFS = (idx, cnt) => {
-//   if (cnt === m) {
-//     answer = Math.min(answer, getMinDistance());
-//     return;
-//   } else {
-//     for (let i = idx; i < chicken.length; i++) {
-//       if (check[i] === true) continue;
-//       check[i] = true;
-//       DFS(i, cnt + 1);
-//       check[i] = false;
-//     }
-//   }
-// };
-// DFS(0, 0);
-// console.log(answer);
+const dfs = (idx, cnt) => {
+  if (cnt === m) {
+    answer = Math.min(answer, getMinDistance());
+    return;
+  } else {
+    for (let i = idx; i < chicken.length; i++) {
+      if (check[i] === true) continue;
+      check[i] = true;
+      dfs(i, cnt + 1);
+      check[i] = false;
+    }
+  }
+};
+dfs(0, 0);
+console.log(answer);
