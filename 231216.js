@@ -177,54 +177,138 @@
 
 // # 치킨 배달 15686
 
+// n = 5;
+// m = 3;
+// city = [
+//   [0, 0, 1, 0, 0],
+//   [0, 0, 2, 0, 1],
+//   [0, 1, 2, 0, 0],
+//   [0, 0, 1, 0, 0],
+//   [0, 0, 0, 0, 2],
+// ];
+
+// const house = [];
+// const chicken = [];
+// const check = new Array(chicken.length).fill(false);
+// let answer = Infinity;
+// for (let i = 0; i < n; i++) {
+//   for (let j = 0; j < n; j++) {
+//     if (city[i][j] == 1) house.push([i, j]);
+//     else if (city[i][j] == 2) chicken.push([i, j]);
+//   }
+// }
+
+// const getMinDistance = () => {
+//   let sum = 0;
+//   house.forEach(([hx, hy]) => {
+//     let min = Infinity;
+//     chicken.forEach((_, idx) => {
+//       if (check[idx] === true) {
+//         const [cx, cy] = chicken[idx];
+//         min = Math.min(min, Math.abs(hx - cx) + Math.abs(hy - cy));
+//       }
+//     });
+//     sum += min;
+//   });
+//   return sum;
+// };
+
+// const dfs = (idx, cnt) => {
+//   if (cnt === m) {
+//     answer = Math.min(answer, getMinDistance());
+//     return;
+//   } else {
+//     for (let i = idx; i < chicken.length; i++) {
+//       if (check[i] === true) continue;
+//       check[i] = true;
+//       dfs(i, cnt + 1);
+//       check[i] = false;
+//     }
+//   }
+// };
+// dfs(0, 0);
+// console.log(answer);
+
+// # 바탕화면 정리
+// const wallpaper = [".#...", "..#..", "...#."];
+// const wallpaper2 = [
+//   "..........",
+//   ".....#....",
+//   "......##..",
+//   "...##.....",
+//   "....#.....",
+// ];
+// const wallpaper3 = [
+//   ".##...##.",
+//   "#..#.#..#",
+//   "#...#...#",
+//   ".#.....#.",
+//   "..#...#..",
+//   "...#.#...",
+//   "....#....",
+// ];
+// // const wallpaper = ["..", "#."];
+
+// function solution(wallpaper) {
+//   let n = wallpaper.length;
+//   let minx = (miny = Number.MAX_SAFE_INTEGER);
+//   let maxx = (maxy = Number.MIN_SAFE_INTEGER);
+//   for (let i = 0; i < wallpaper.length; i++) {
+//     for (let j = 0; j < wallpaper[0].length; j++) {
+//       if (wallpaper[i][j] === "#") {
+//         miny = Math.min(miny, j);
+//         maxy = Math.max(maxy, j);
+//         console.log(i);
+//         console.log(wallpaper[i]);
+//         if (wallpaper[i].indexOf("#") >= 0) {
+//           minx = Math.min(minx, i);
+//           maxx = Math.max(maxx, i);
+//         }
+//       }
+//     }
+//   }
+//   return [minx, miny, maxx + 1, maxy + 1];
+// }
+
+// console.log(solution(wallpaper));
+
+// n = 8;
+// m = 4;
+// section = [2, 3, 6];
+// result = 2;
 n = 5;
-m = 3;
-city = [
-  [0, 0, 1, 0, 0],
-  [0, 0, 2, 0, 1],
-  [0, 1, 2, 0, 0],
-  [0, 0, 1, 0, 0],
-  [0, 0, 0, 0, 2],
-];
+m = 4;
+section = [1, 3];
+// n = 4;
+// m = 1;
+// section = [1, 2, 3, 4];
 
-const house = [];
-const chicken = [];
-const check = new Array(chicken.length).fill(false);
-let answer = Infinity;
-for (let i = 0; i < n; i++) {
-  for (let j = 0; j < n; j++) {
-    if (city[i][j] == 1) house.push([i, j]);
-    else if (city[i][j] == 2) chicken.push([i, j]);
-  }
-}
-
-const getMinDistance = () => {
-  let sum = 0;
-  house.forEach(([hx, hy]) => {
-    let min = Infinity;
-    chicken.forEach((_, idx) => {
-      if (check[idx] === true) {
-        const [cx, cy] = chicken[idx];
-        min = Math.min(min, Math.abs(hx - cx) + Math.abs(hy - cy));
-      }
-    });
-    sum += min;
+function solution2(n, m, section) {
+  let visited = Array.from({ length: n + 1 }, () => 1);
+  section.forEach((el) => {
+    visited[el] = 0;
   });
-  return sum;
-};
+  let answer = 0;
 
-const dfs = (idx, cnt) => {
-  if (cnt === m) {
-    answer = Math.min(answer, getMinDistance());
-    return;
-  } else {
-    for (let i = idx; i < chicken.length; i++) {
-      if (check[i] === true) continue;
-      check[i] = true;
-      dfs(i, cnt + 1);
-      check[i] = false;
+  for (let i = 0; i < visited.length; i++) {
+    if (!visited[i]) {
+      answer += 1;
+      i += m - 1;
     }
   }
-};
-dfs(0, 0);
-console.log(answer);
+  return answer;
+}
+
+function solution(n, m, sections) {
+  let answer = 0;
+  let painted = 0;
+  for (var section of sections) {
+    if (painted < section) {
+      answer++;
+      painted = section + m - 1;
+    }
+  }
+  return answer;
+}
+
+console.log(solution(n, m, section));
