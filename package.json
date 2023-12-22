@@ -6,7 +6,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon 231221.js"
+    "dev": "nodemon 231222.js"
   },
   "author": "",
   "license": "ISC",
