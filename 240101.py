@@ -104,16 +104,58 @@
 # print(cnt)
 
 
-import sys
-input = sys.stdin.readline
+# import sys
+# input = sys.stdin.readline
 
-n = int(input())
-dp = [k for k in range(n+1)]
+# n = int(input())
+# dp = [k for k in range(n+1)]
 
-for i in range(1, n + 1):
-	for j in range(1, i):
-		if j*j > i:
-			break
-		if dp[i] > dp[i-j*j]+1:
-			dp[i] = dp[i-j*j] + 1
-print(dp[n])
+# for i in range(1, n + 1):
+# 	for j in range(1, i):
+# 		if j*j > i:
+# 			break
+# 		if dp[i] > dp[i-j*j]+1:
+# 			dp[i] = dp[i-j*j] + 1
+# print(dp[n])
+
+# SW Expert Academy 파리퇴치3
+dxPlus = [-1,1,0,0]
+dyPlus = [0,0,-1,1]
+dxMulti = [-1,-1,1,1]
+dyMulti = [-1,1,-1,1]
+
+def plus(x,y):
+	answer = arr[x][y]
+	for i in range(4):
+		for j in range(1,m):
+			nx = dxPlus[i]*j + x
+			ny = dyPlus[i]*j + y
+			if 0<= nx < n and 0<= ny < n:
+				answer+=arr[nx][ny]
+	return answer
+
+
+
+def multi(x,y):
+	answer = arr[x][y]
+	for i in range(4):
+		for j in range(1,m):
+			nx = dxMulti[i]*j + x
+			ny = dyMulti[i]*j + y
+			if 0<= nx < n and 0<= ny < n:
+				answer+=arr[nx][ny]
+	return answer
+
+
+
+t = int(input())
+for i in range(t):
+	n,m = map(int,input().split(' '))
+	arr = [list(map(int,input().split(' '))) for _ in range(n)]
+	answer = 0
+	for i in range(n):
+		for j in range(n):
+			answer = max(answer, plus(i,j),multi(i,j))
+	print('answer ====>',answer)
+
+
