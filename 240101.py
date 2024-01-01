@@ -121,6 +121,7 @@
 # SW Expert Academy 파리퇴치3
 dxPlus = [-1,1,0,0]
 dyPlus = [0,0,-1,1]
+
 dxMulti = [-1,-1,1,1]
 dyMulti = [-1,1,-1,1]
 
@@ -130,7 +131,7 @@ def plus(x,y):
 		for j in range(1,m):
 			nx = dxPlus[i]*j + x
 			ny = dyPlus[i]*j + y
-			if 0<= nx < n and 0<= ny < n:
+			if 0 <= nx < n and 0 <= ny < n:
 				answer+=arr[nx][ny]
 	return answer
 
@@ -152,6 +153,10 @@ t = int(input())
 for i in range(t):
 	n,m = map(int,input().split(' '))
 	arr = [list(map(int,input().split(' '))) for _ in range(n)]
+	# arr = []
+	# for i in range(n):
+	# 	arr.append(list(map(int,input().split())))
+
 	answer = 0
 	for i in range(n):
 		for j in range(n):
