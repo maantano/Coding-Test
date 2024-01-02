@@ -98,6 +98,51 @@
 # print(answer)
 
 
+# 사탕 게임 연산 줄이기!
+def chk(a,startX,endX,startY,endY):
+	n = len(a)
+	ans = 1
+	for i in range(startX,endX+1):
+		cnt = 1
+		for j in range(1,n):
+			if a[i][j] == a[i][j-1]:
+				cnt+=1
+			else:
+				cnt=1
+			if ans < cnt:
+				ans = cnt
+	for i in range(startY,endY+1):
+		cnt = 1
+		for j in range(1,n):
+			if a[j][i] == a[j-1][i]:
+				cnt +=1
+			else:
+				cnt = 1
+			if ans < cnt:
+				ans = cnt
+	return ans
+n = int(input())
+a = [list(input()) for _ in range(n)]
+
+ans = 0
+for i in range(n):
+	for j in range(n):
+		if j+1 < n:
+			a[i][j],a[i][j+1] = a[i][j+1],a[i][j]
+			tmp = chk(a,i,i,j,j+1)
+			if ans < tmp:
+				ans = tmp
+			a[i][j],a[i][j+1] = a[i][j+1],a[i][j]
+		if i+1 < n:
+			a[i][j],a[i+1][j] = a[i+1][j],a[i][j]
+			tmp = chk(a,i,i+1,j,j)
+			if ans < tmp:
+				ans = tmp
+			a[i][j],a[i+1][j] = a[i+1][j],a[i][j]
+print(ans)
+
+
+
 
 # 1107 리모컨
 
