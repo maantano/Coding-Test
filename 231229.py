@@ -121,6 +121,7 @@ def chk(a,startX,endX,startY,endY):
 			if ans < cnt:
 				ans = cnt
 	return ans
+
 n = int(input())
 a = [list(input()) for _ in range(n)]
 
