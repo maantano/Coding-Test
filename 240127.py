@@ -33,6 +33,7 @@
 # 	result += i * (i-1) // 2
 # print(result)
 
+
 # 치킨 배달
 # https://www.acmicpc.net/problem/15686
 # import sys
@@ -93,44 +94,46 @@
 
 
 
-import sys
-input = sys.stdin.readline
+# import sys
+# input = sys.stdin.readline
 
-N,M = map(int,input().split())
-arr = [list(map(int,input().split())) for _ in range(N)]
-answer  = float('inf')
-chicken = []
-house = []
+# N,M = map(int,input().split())
+# arr = [list(map(int,input().split())) for _ in range(N)]
+# answer  = float('inf')
+# chicken = []
+# house = []
 
-def dfs(cur,arr):
-	global answer
-	if len(arr)==M:
-		result = 0
-		for x,y in house:
-			min_dist = float('inf')
-			for ix,iy in arr:
-				dist=abs(x-ix) + abs(y-iy)
-				min_dist = min(dist,min_dist)
-			result += min_dist
-		answer = min(answer,result)
-		return
+# def dfs(cur,arr):
+# 	global answer
+# 	if len(arr)==M:
+# 		result = 0
+# 		for x,y in house:
+# 			min_dist = float('inf')
+# 			for ix,iy in arr:
+# 				dist=abs(x-ix) + abs(y-iy)
+# 				min_dist = min(dist,min_dist)
+# 			result += min_dist
+# 		answer = min(answer,result)
+# 		return
 
-	if cur == len(chicken):
-		return
-	dfs(cur+1,arr+[chicken[cur]])
-	dfs(cur+1,arr)
-
-
-for i in range(N):
-	for j in range(N):
-		if arr[i][j] == 1:
-			house.append((i,j))
-		if arr[i][j] == 2:
-			chicken.append((i,j))
+# 	if cur == len(chicken):
+# 		return
+# 	dfs(cur+1,arr+[chicken[cur]])
+# 	dfs(cur+1,arr)
 
 
+# for i in range(N):
+# 	for j in range(N):
+# 		if arr[i][j] == 1:
+# 			house.append((i,j))
+# 		if arr[i][j] == 2:
+# 			chicken.append((i,j))
 
-dfs(0,[])
-print(answer)
+
+
+# dfs(0,[])
+# print(answer)
+
+
 
 
