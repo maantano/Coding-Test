@@ -136,12 +136,6 @@ n,m = map(int,input().split())
 a = list(map(int,input().split()))
 ans = 0
 for i in range(1, (1<<n)):
-	# s = 0
-	# for k in range(n):
-	# 	print('k ===>',k)
-	# 	if (i & (1<<k) > 0 ):
-	# 		s += a[k]
-	# print('s ====>',s)
 	s = sum(a[k] for k in range(n) if (i & (1<<k)) > 0)
 	if m == s:
 		ans += 1
