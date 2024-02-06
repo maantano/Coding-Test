@@ -509,40 +509,40 @@
 # print(ans)
 
 
-import sys
-input = sys.stdin.readline
-import heapq
+# import sys
+# input = sys.stdin.readline
+# import heapq
 
-n = int(input())
-m = int(input())
-g = [[] for _ in range(n+1)]
-INF = int(1e9)
-distance = [[INF] * n for _ in range(m)]
-dx = [-1,1,0,0]
-dy = [0,0,-1,1]
+# n = int(input())
+# m = int(input())
+# g = [[] for _ in range(n+1)]
+# INF = int(1e9)
+# distance = [[INF] * n for _ in range(m)]
+# dx = [-1,1,0,0]
+# dy = [0,0,-1,1]
 
-for i in range(m):
-	a,b,c = map(int,input().split())
-	g[a].append((b,c))
+# for i in range(m):
+# 	a,b,c = map(int,input().split())
+# 	g[a].append((b,c))
 
-start, end = map(int, input().split())
-costs = [1e9 for _ in range(n+1)]
-heap = []
-costs[start] = 0
-heapq.heappush(heap, [0, start])
+# start, end = map(int, input().split())
+# costs = [1e9 for _ in range(n+1)]
+# heap = []
+# costs[start] = 0
+# heapq.heappush(heap, [0, start])
 
-while heap:
-	cur_cost, cur_v = heapq.heappop(heap)
-	if costs[cur_v] < cur_cost:
-		continue
+# while heap:
+# 	cur_cost, cur_v = heapq.heappop(heap)
+# 	if costs[cur_v] < cur_cost:
+# 		continue
 
-	for next_v,next_cost in g[cur_v]:
-		sum_cost = cur_cost+next_cost
-		if sum_cost >= costs[next_v]:
-			continue
-		costs[next_v] = sum_cost
-		heapq.heappush(heap,[sum_cost,next_v])
-print(costs[end])
+# 	for next_v,next_cost in g[cur_v]:
+# 		sum_cost = cur_cost+next_cost
+# 		if sum_cost >= costs[next_v]:
+# 			continue
+# 		costs[next_v] = sum_cost
+# 		heapq.heappush(heap,[sum_cost,next_v])
+# print(costs[end])
 
 # def djikstra():
 # 	q = []
@@ -574,4 +574,308 @@ print(costs[end])
 
 
 
+# 기타줄
+# https://www.acmicpc.net/problem/1049
 
+# 6줄 패키지, 1개 이상 낱개로 살수 있다.
+
+# 끊어진 줄 N, 브랜드 M
+
+
+# n, m = map(int, input().split())
+
+# answer = 0
+# price_list = []
+
+# for _ in range(m):
+# 	price = tuple(map(int, input().split()))
+# 	price_list.append(price)
+
+# six_list = sorted(price_list, key=lambda x : x[0])
+# one_list = sorted(price_list, key=lambda x : x[1])
+
+# if six_list[0][0] <= one_list[0][1] * 6:
+# 	answer = six_list[0][0] * (n // 6) + one_list[0][1] * (n % 6)
+# 	if six_list[0][0] < one_list[0][1] * (n % 6):
+# 		answer = six_list[0][0] * (n//6 + 1)
+# else:
+# 	answer = one_list[0][1] * n
+
+# print(answer)
+
+
+# n, m = map(int, input().split())
+# package = []
+# single = []
+
+# for _ in range(m):
+# 	a, b = map(int, input().split())
+# 	package.append(a)
+# 	single.append(b)
+
+# min_package = min(package)
+# min_single = min(single)
+
+# ans = 0
+# while n > 0:
+# 	if n >= 6:
+# 		min_single = min_single *6
+# 		n-=6
+# 	else:
+# 		min_single = min_single * n
+# 		n -= n
+# 	if min_single < min_package:
+# 		ans += min_single
+# 	else:
+# 		ans += min_package
+
+# import sys
+# input = sys.stdin.readline
+
+# from collections import deque
+# def solve(a,b):
+# 	q = deque([(a,1)])
+
+# 	while q:
+# 		now,cnt = q.popleft()
+# 		if now == b:
+# 			print(cnt)
+# 			return
+# 		if now %2 <= b:
+# 			q.append((now*2,cnt+1))
+# 		if now *10 + 1 <= b:
+# 			q.append((now*10+1,cnt+1))
+# 	print(-1)
+# n,m = map(int,input().split())
+# solve(n,m)
+
+
+
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+# t = int(input())
+
+# for _ in range(t):
+# 	n = int(input())
+# 	arr = sorted([list(map(int,input().split())) for _ in range(n)])
+# 	top = 0
+# 	ans = 1
+
+# 	for i in range(1,len(arr)):
+# 		if arr[i][1] < arr[top][1]:
+# 			top = i
+# 			ans += 1
+# 	print(ans)
+
+
+# 센서
+# https://www.acmicpc.net/problem/2212
+
+# n =int(input())
+# s = int(input())
+# arr = sorted(list(map(int,input().split())))
+# gap  = []
+# for i in range(1,n):
+# 	gap.append(abs(arr[i-1] - arr[i]))
+
+# gap.sort()
+# k=n-s
+# ans = 0
+# for i in range(k):
+# 	ans += gap[i]
+# print(ans)
+
+
+# 메모리 초과
+# A와 B
+# https://www.acmicpc.net/problem/12904
+
+# S = list(map(str, input()))
+# T = list(map(str, input()))
+
+# while len(S) != len(T):
+# 	if T[-1] == 'A':
+# 		T.pop()
+# 	elif T[-1] == 'B':
+# 		T.pop()
+# 		T = T[::-1]
+# 	print(T)
+# if S == T:
+# 	print(1)
+# else:
+# 	print(0)
+
+
+
+# import sys
+# input = sys.stdin.readline
+
+# S = list(input().rstrip())
+# T = list(input().rstrip())
+
+# while len(S) != len(T):
+# 	if T[-1] == 'A':
+# 		T.pop()
+# 	elif T[-1] == 'B':
+# 		T.pop()
+# 		T = T[::-1]
+# if S==T:
+# 	print(1)
+# else:
+# 	print(0)
+
+
+# 마인크래프트
+# https://www.acmicpc.net/problem/18111
+
+# import sys
+
+# N, M, B = map(int, sys.stdin.readline().split())
+# field = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
+# answer = sys.maxsize
+# idx = 0
+
+# for floor in range(257):
+# 	exceed_block, lack_block = 0, 0
+
+# 	for i in range(N):
+# 		for j in range(M):
+
+# 			if field[i][j] > floor :
+# 				exceed_block += field[i][j] - floor
+# 			else :
+# 				lack_block += floor - field[i][j]
+
+# 	if exceed_block + B >= lack_block :
+# 		if (exceed_block * 2) + lack_block <= answer:
+# 			answer = (exceed_block * 2) + lack_block
+# 			idx = floor
+
+
+# print(answer, idx)
+
+# 토너먼트
+# https://www.acmicpc.net/problem/1057
+
+
+
+# n,k,l = map(int,input().split())
+# g = [k in range(1,n+1)]
+# # a = b = len(n) // 2
+# cnt = 0
+# while k != l:
+# 	k -= k//2
+# 	l -= l//2
+# 	cnt+=1
+# print(cnt)
+
+
+# 다시
+# 감소하는 수
+# https://www.acmicpc.net/problem/1038
+
+
+# 10 까지 10개
+# # 11 12 13 14 15 16 19
+# 20 21
+# 30 31 32
+# 40 41 42 43
+# 50 51 52 53 54
+
+# n = int(input())
+# num = '0123456789'
+# cnt = 1
+# nums = []
+# for i in num:
+# 	nums.append(i)
+# while cnt < 10:
+# 	# 자릿수가 같아도 안 되고 모든 자리 수가 감소해야하므로 가장 큰 감소하는 수는
+# 	# 9876543210입니다. 따라서 자릿수가 10 이하인 경우로 조건을 제한하여 while
+# 	# 반복문을 시행해줍니다.
+# 	for i in nums:
+# 		if len(i) == cnt:
+# 			# nums를 순회하며 cnt의 길이와 같으면
+# 			for j in range(10):
+# 				if int(i[-1]) > j:
+# 					nums.append(i + str(j))
+# 					# 마지막 값보다 작을 수를 차례롤 더하여 리스트에 추가해 줍니다.
+# 	cnt += 1
+# 	# cnt를 1 더해 자릿수가 바뀌었음을 표시해줍니다.
+
+# if n > 1022:
+# 	print(-1)
+# 	# 총 감소하는 수의 개수는 1022개 존재하므로 그보다 큰 입력이 주어지면 -1을 출력하고
+# else:
+# 	print(nums[n])
+# 	# 1022 이하의 수가 주어지면 리스트에서 주어진 숫자의 인덱스 값을 출력해줍니다.
+
+
+# 가장 긴 감소하는 부분 수열
+# https://www.acmicpc.net/problem/11722
+
+# n = int(input())
+# arr  = list(map(int,input().split()))
+
+# dp = [1]*n
+
+# for i in range(1,n):
+# 	for j in range(i):
+# 		if arr[i]< arr[j]:
+# 			dp[i] = max(dp[i], dp[j]+1)
+# print(max(dp))
+
+# LCS
+# https://www.acmicpc.net/problem/9251
+
+# a = input().rstrip()
+# b = input().rstrip()
+
+# l1 = len(a)
+# l2 = len(b)
+# dp = [0] * l2
+# for i in range(l1):
+# 	cnt = 0
+# 	for j in range(l2):
+# 		if cnt < dp[j]:
+# 			cnt = dp[j]
+# 		elif a[i] == b[j]:
+# 			dp[j] = cnt+1
+# print(max(dp))
+
+
+
+# 평범한 배낭
+# https://www.acmicpc.net/problem/12865
+
+# n,k = map(int,input().split())
+# arr = [[0,0]]+[list(map(int,input().split())) for _ in range(n)]
+# dp = [[0 for _ in range(k+1)] for _ in range(n+1)]
+
+
+# for i in range(1,n+1):
+# 	for j in range(1,k+1):
+# 		w,v = arr[i]
+# 		if j < w:
+# 			dp[i][j] = dp[i-1][j]
+# 		else:
+# 			dp[i][j] = max(v+dp[i-1][j-w], dp[i-1][j])
+
+
+
+import sys
+input = sys.stdin.readline
+
+n,k = map(int,input().split())
+arr = [[0,0]] + [list(map(int,input().split())) for _ in range(n)]
+dp = [[0 for _ in range(k+1)] for _ in range(n+1)]
+
+for i in range(1,n+1):
+	for j in range(1,k+1):
+		w , v = arr[i]
+		if j <w:
+			dp[i][j] = dp[i-1][j]
+		else:
+			dp[i][j] = max(v+dp[i-1][j-w], dp[i-1][j])
+
+print(dp[n][k])
