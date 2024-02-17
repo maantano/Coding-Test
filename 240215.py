@@ -399,3 +399,239 @@
 # 	result = 1003001
 
 # print(result)
+
+
+
+# 숫자판 점프
+# https://www.acmicpc.net/problem/2210
+
+# dx = [-1,1,0,0]
+# dy = [0,0,-1,1]
+
+# g = [list(map(str,input().split())) for _ in range(5)]
+# ans = []
+# def dfs(x,y,num):
+# 	if len(num) == 6:
+# 		if num not in ans:
+# 			ans.append(num)
+# 		return
+
+# 	for i in range(4):
+# 		nx = x + dx[i]
+# 		ny = y + dy[i]
+# 		if 0<=nx<5 and 0<= ny <5:
+# 			dfs(nx,ny,num+g[nx][ny])
+
+# for i in range(5):
+# 	for j in range(5):
+# 		dfs(i,j,g[i][j])
+
+# print(len(ans))
+
+# 색종이 붙이기
+# https://www.acmicpc.net/problem/17136
+
+# from collections import deque
+
+# dx = [0,1,1]
+# dy = [1,0,1]
+
+
+
+# g = [list(map(int,input().split())) for _ in range(10)]
+# visited = [[0] * 10 for _ in range(10)]
+
+
+# def dfs(x,y):
+# 	q = deque([(x,y)])
+# 	visited[x][y] = 1
+
+# 	while q:
+# 		x,y = q.popleft()
+# 		for i in range(3):
+# 			nx = x + dx[i]
+# 			ny = y + dy[i]
+
+# 			if 0 <= nx < 10 and 0<= ny <10:
+# 				if not visited[nx][ny] and g[nx][ny]:
+
+
+# for i in range(10):
+# 	for j in range(10):
+# 		if not visited[i][j]:
+# 			visited[i][j] = 1
+# 			if g[i][j]:
+# 				dfs(i,j)
+
+
+# 회전 초밥
+# https://www.acmicpc.net/problem/2531
+
+# n,d,k,c =map(int,input().split())
+# arr = [int(input()) for _ in range(n)]
+# nArr = arr * 2
+
+
+# for i in nArr:
+
+
+# visited = [for i in range(1,d+1)]
+
+# 1
+# 4
+# 2 4 7 10
+
+
+# def chk(n):
+# 	s = str(n)
+# 	for i in range(0,len(s)-1):
+# 		if s[i] > s[i+1]:
+# 			return False
+# 	return True
+
+
+
+
+# t = int(input())
+# for case in range(t):
+# 	n = int(input())
+# 	arr = sorted(list(map(int,input().split())))
+# 	chkArr = []
+# 	for i in range(n):
+# 		for j in range(i+1,n):
+# 			if chk(arr[i]*arr[j]):
+# 				chkArr.append(arr[i]*arr[j])
+
+# 	print(f"#{case+1} {chkArr[-1]}")
+
+
+
+# def chk(n):
+# 	s = str(n)
+# 	for i in range(0,len(s)-1):
+# 		if s[i] > s[i+1]:
+# 			return False
+# 	return True
+
+
+# T = int(input())
+
+# for case in range(1,T+1):
+# 	n = int(input())
+# 	arr = list(map(int,input().split()))
+# 	arr.sort(reverse=True)
+# 	maxV = -1
+# 	for i in range(n-1):
+# 		for j in range(i+1,n):
+# 			v = arr[i]*arr[j]
+# 			if maxV > v:
+# 				break
+# 			if chk(v):
+# 				maxV = v
+# 	print(f'#{case} {maxV}')
+
+
+
+# def chk(n):
+# 	s = str(n)
+# 	for i in range(0,len(s)-1):
+# 		if s[i] > s[i+1]:
+# 			return False
+# 	return True
+
+
+# t = int(input())
+
+# for case in range(t):
+# 	n = int(input())
+# 	arr = list(map(int,input().split()))
+# 	arr.sort(reverse=True)
+# 	maxV = -1
+# 	for i in range(n-1):
+# 		for j in range(i+1,n):
+# 			v = arr[i]*arr[j]
+# 			if maxV > v:
+# 				break
+# 			if chk(v):
+# 				maxV = v
+# 	print(f"#{case+1} {maxV}")
+
+# 회전 초밥
+# https://www.acmicpc.net/problem/2531
+
+
+# import sys
+# input = sys.stdin.readline
+# n,d,k,c = map(int,input().split())
+# arr = [int(input()) for _ in range(n)]
+
+# lp,rp = 0,0
+# answer = 0
+
+# while lp != n:
+# 	rp = lp+k
+# 	case = set()
+# 	addable = True
+
+# 	for i in range(lp,rp):
+# 		i %= n
+# 		case.add(arr[i])
+# 		if arr[i] == c: addable = False
+# 	cnt = len(case)
+
+# 	if addable: cnt += 1
+# 	answer = max(answer,cnt)
+# 	lp += 1
+# print(answer)
+
+
+# import sys
+# input = sys.stdin.readline
+
+# n,d,k,c = map(int,input().split())
+# arr  = [int(input()) for _ in range(n)]
+
+# start,end = 0,0
+# answer = 0
+
+# while start != n:
+# 	end = start+k
+# 	case = set()
+# 	add = True
+
+# 	for i in range(start,end):
+# 		i %= n
+# 		case.add(arr[i])
+# 		if arr[i] == c: add = False
+
+# 	cnt = len(case)
+
+# 	if add: cnt+=1
+# 	answer = max(answer,cnt)
+# 	start += 1
+# print(answer)
+
+
+
+# 다음 소수
+# https://www.acmicpc.net/problem/4134
+
+
+# def prime(n):
+# 	for i in range(2,int(n**0.5)+1):
+# 		if n % i == 0:
+# 			return False
+# 	return True
+
+# n = int(input())
+# arr = [int(input()) for _ in range(n)]
+
+# for chk in arr:
+# 	if chk < 2:
+# 		print(2)
+# 		continue
+# 	while True:
+# 		if prime(chk):
+# 			print(chk)
+# 			break
+# 		chk+=1
