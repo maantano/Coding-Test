@@ -635,3 +635,186 @@
 # 			print(chk)
 # 			break
 # 		chk+=1
+
+
+
+# 킹
+# https://www.acmicpc.net/problem/1063
+
+# R : 한 칸 오른쪽으로
+# L : 한 칸 왼쪽으로
+# B : 한 칸 아래로
+# T : 한 칸 위로
+# RT : 오른쪽 위 대각선으로
+# LT : 왼쪽 위 대각선으로
+# RB : 오른쪽 아래 대각선으로
+# LB : 왼쪽 아래 대각선으로
+
+
+# A1 A2 5
+# B
+# L
+# LB
+# RB
+# LT
+# def convert(s):
+# 	return (ord(s[0]) - ord('H') + 8,int(s[1]))
+
+# def chkMove(newMoveX,newMoveY):
+# 	if 0<=newMoveX < 8 and 0<=newMoveY < 8:
+# 		return True
+# 	return False
+
+# def stoneMove(sx,sy,move):
+
+# 	if arr[sx][sy] == 2:
+# 		if move == 'B':
+
+
+
+
+
+# king,stone,n = map(str,input().split())
+
+# kingX,kingY = convert(king)
+# stoneX,stoneY = convert(stone)
+
+# arr = [[0]*9 for _ in range(9)]
+
+# arr[kingX][kingY] = 1
+# arr[stoneX][stoneY] = 2
+
+# for _ in range(n):
+# 	path = input()
+
+# 	if path == 'R':
+# 		arr[kingX][kingY] = 0
+# 		arr[kingX][kingY+1] = 1
+
+
+# king,rock, t = input().split()
+# t = int(t)
+# move = [input() for _ in range(t)]
+
+
+# king_x = int(ord(king[0])) - int(ord('A')) + 1
+# king_y = int(king[1])
+
+# rock_x = int(ord(rock[0])) - int(ord('A')) + 1
+# rock_y = int(rock[1])
+
+
+# alp = ['A','B','C','D','E','F','G','H']
+
+
+# move_type = ['R','L' ,'B' ,'T' ,'RT' ,'LT' ,'RB' ,'LB']
+# dx = [+1,-1, 0, 0, +1, -1, +1, -1]
+# dy = [0, 0, -1, +1, +1, +1, -1, -1]
+
+
+
+# for i in range(t): # t번 반복
+# 	# move[i]가 move_type에서 몇번째 인덱스인지 찾기
+# 	index = move_type.index(move[i])
+
+# 	# 킹이 t번 움직인다. (예외 검사)
+# 	if king_x + dx[index] >= 1 and king_x + dx[index] <= 8 and king_y + dy[index] >= 1 and king_y + dy[index] <= 8: # 킹 예외
+# 		if king_x + dx[index] == rock_x and king_y + dy[index] == rock_y: #돌에 얹힘
+# 			if rock_x + dx[index] >= 1 and rock_x + dx[index] <= 8 and rock_y + dy[index] >= 1 and rock_y + dy[index] <= 8: # 돌예외
+# 				king_x += dx[index]
+# 				king_y += dy[index]
+# 				rock_x += dx[index]
+# 				rock_y += dy[index]
+# 			else:
+# 				continue
+
+# 		else :
+# 			king_x += dx[index]
+# 			king_y += dy[index]
+
+
+# 	else:
+# 		continue
+
+
+# print(alp[king_x-1]+str(king_y))
+# print(alp[rock_x-1]+str(rock_y))
+
+
+
+
+
+# 도로와 신호등
+# https://www.acmicpc.net/problem/2980
+
+# import sys
+# input = sys.stdin.readline
+
+# N, L = map(int, input().split())
+# pos = 0
+# answer = 0
+
+# for _ in range(N):
+# 	d, r, g = map(int, input().split())
+
+# 	answer += (d - pos)
+# 	pos = d
+# 	if answer % (r+g) <= r:
+# 		answer += (r - (answer%(r+g)))
+
+# answer += (L-pos)
+# print(answer)
+
+# 롤 케이크
+# https://www.acmicpc.net/problem/3985
+
+l = int(input())
+n = int(input())
+a = -1
+ans1 = 0
+b = -1
+ans2 = 0
+visited = [0] * (l+1)
+for person in range(1,n+1):
+	start,end = map(int,input().split())
+
+	distance = end - start
+	if a < distance:
+		a = distance
+		ans1 = person
+
+	tmpCnt = 0
+	for i in range(start,end+1):
+		if not visited[i]:
+			visited[i] = person
+			tmpCnt+=1
+
+	if b < tmpCnt:
+		b = tmpCnt
+		ans2 = person
+
+print(ans1,ans2,sep='\n')
+
+
+# 색종이
+# https://www.acmicpc.net/problem/10163
+
+import sys
+input = sys.stdin.readline
+
+N = int(input())
+matrix = [[0]*1001 for _ in range(1001)]
+for k in range(1,N+1):
+	x,y,w,h = map(int, input().split())
+	for i in range(x,x+w):
+		for j in range(y,y+h):
+			matrix[i][j] = k
+
+cnt_color = [0] * (N+1)
+for i in range(1001):
+	for j in range(1001):
+		if matrix[i][j]:
+			cnt_color[matrix[i][j]] += 1
+
+for i in range(1,N+1):
+	print(cnt_color[i])
