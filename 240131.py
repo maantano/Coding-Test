@@ -141,3 +141,7 @@ for i in range(1, (1<<n)):
 		ans += 1
 print(ans)
 
+
+
+
+
