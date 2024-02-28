@@ -32,6 +32,12 @@ def chk(idx,first,second):
 print(chk(0,[],[]))
 
 
+# 4
+# 0 5 3 8
+# 4 0 4 1
+# 2 5 0 3
+# 7 2 3 0
+
 
 # # 15661 링크와 스타트
 
@@ -71,9 +77,9 @@ print(chk(0,[],[]))
 # print(chk(0,[],[]))
 
 
-chk = 1
-for i in range(1801,2101):
-	if i % 10 == 0 and i % 12==0:
-		print(i)
-		break
+# chk = 1
+# for i in range(1801,2101):
+# 	if i % 10 == 0 and i % 12==0:
+# 		print(i)
+# 		break
 

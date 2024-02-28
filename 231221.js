@@ -144,7 +144,7 @@
 // 1789 # 수들의 합
 
 n = 200;
-let n = Number(require('fs').readFileSync('/dev/stdin').trim())
+let n = Number(require("fs").readFileSync("/dev/stdin").trim());
 answer = 0;
 idx = 1;
 cnt = 0;
