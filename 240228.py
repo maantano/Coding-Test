@@ -513,26 +513,399 @@
 # dfs(0)
 # print(result)
 
-n = int(input())
+# n = int(input())
 
-def chk(x):
-	for i in range(x):
-		if arr[x] == arr[i] or abs(x-i) ==  abs(arr[x] - arr[i]):
-			return False
-	return True
+# def chk(x):
+# 	for i in range(x):
+# 		if arr[x] == arr[i] or abs(x-i) ==  abs(arr[x] - arr[i]):
+# 			return False
+# 	return True
 
-def dfs(x):
-	global result
-	if x == n:
-		result+=1
-	else:
-		for i in range(n):
-			arr[x] = i
-			if chk(x):
-				dfs(x+1)
+# def dfs(x):
+# 	global result
+# 	if x == n:
+# 		result+=1
+# 	else:
+# 		for i in range(n):
+# 			arr[x] = i
+# 			if chk(x):
+# 				dfs(x+1)
 
 
-arr = [0] * n
-result = 0
-dfs(0)
-print(result)
+# arr = [0] * n
+# result = 0
+# dfs(0)
+# print(result)
+
+
+
+# n = int(input())
+# def chk(x):
+# 	for i in range(x):
+# 		if arr[x] == arr[i] or abs(x-i) == abs(arr[x]-arr[i]):
+# 			return False
+# 	return True
+
+# def dfs(x):
+# 	global result
+# 	if x == n:
+# 		result += 1
+# 	else:
+# 		for i in range(n):
+# 			arr[x] = i
+# 			if chk(x):
+# 				dfs(x+1)
+
+
+# arr = [0] * n
+# result = 0
+# dfs(0)
+# print(result)
+
+# 스타트와 링크
+# n = int(input())
+# arr = [list(map(int,input().split())) for _ in range(n)]
+
+# def dfs(d,first,second):
+# 	if d == n:
+# 		if len(first) != n // 2:
+# 			return -1
+# 		if len(second) != n // 2:
+# 			return -1
+
+
+
+# 		t1 = 0
+# 		t2 = 0
+
+# 		for i in range(n//2):
+# 			for j in range(n//2):
+# 				if i == j:
+# 					continue
+# 				t1 += arr[first[i]][first[j]]
+# 				t2 += arr[second[i]][second[j]]
+
+# 		diff = abs(t1-t2)
+# 		return diff
+
+# 	result = -1
+# 	t1 = dfs(d+1,first+[d],second)
+# 	if result == -1 or (t1 != -1 and result > t1):
+# 		result = t1
+
+# 	t2 = dfs(d+1,first,second+[d])
+# 	if result == -1 or (t2 != -1 and result > t2):
+# 		result = t2
+
+# 	return result
+
+# print(dfs(0,[],[]))
+
+# import sys
+# input= sys.stdin.readline
+
+# n,k =map(int,input().split())
+# r,c = map(int,input().split())
+# dr =[-1,-1,-1,0,0,1,1,1]
+# dc =[-1,0,1,1,-1,-1,0,1]
+
+# move_li = [(r,c)] + [(r+dr[i],c+dc[i])  for i in range(8) if 1<=r+dr[i] <= n and 1<= c+dc[i] <= n]
+# s = set()
+
+# for i in range(k):
+# 	r_i,c_i = map(int,input().split())
+# 	for mr,mc in move_li:
+# 		if abs(r_i-mr) == abs(c_i-mc) or mr == r_i or mc == c_i:
+# 			s.add((mr,mc))
+# if (r,c) in s:
+# 	if len(move_li) == len(s):
+# 		print('CHECKMATE')
+# 	else:
+# 		print('CHECK')
+# else:
+# 	if len(s) == len(move_li) - 1:
+# 		print('STALEMATE')
+# 	else:
+# 		print('NONE')
+
+
+
+# n = int(input())
+
+# arr = [0] * n
+
+# result = 0
+
+
+# def chk(x):
+# 	for i in range(x):
+# 		if arr[x] == arr[i] or abs(x-i) == abs(arr[x] - arr[i]):
+# 			return False
+# 	return True
+
+
+# def dfs(x):
+# 	global result
+# 	if x == n:
+# 		result+=1
+# 	else:
+
+# 		for i in range(n):
+# 			arr[x] = i
+# 			if chk(x):
+# 				dfs(x+1)
+
+# dfs(0)
+# print(result)
+
+
+# 트리의 부모 찾기
+# https://www.acmicpc.net/problem/11725
+
+
+# import sys
+# sys.setrecursionlimit(10**6)
+# n = int(sys.stdin.readline())
+
+# graph = [[] for i in range(n+1)]
+
+# for i in range(n-1):
+# 	a, b = map(int, sys.stdin.readline().split())
+# 	graph[a].append(b)
+# 	graph[b].append(a)
+
+# visited = [0]*(n+1)
+
+# arr = []
+
+# def dfs(s):
+# 	for i in graph[s]:
+# 		if visited[i] == 0:
+# 			visited[i] = s
+# 			dfs(i)
+
+# dfs(1)
+
+# for x in range(2, n+1):
+# 	print(visited[x])
+
+
+# 영역 구하기
+# https://www.acmicpc.net/problem/2583
+
+
+# from collections import deque
+
+# m, n ,k = map(int,input().split())
+# visited = [[0] * (n) for _ in range(m)]
+
+
+# for _ in range(k):
+# 	x1,y1,x2,y2 = map(int,input().split())
+
+# 	for i in range(y1,y2):
+# 		for j in range(x1,x2):
+# 			visited[i][j] = 1
+
+
+# dx = [0,0,-1,1]
+# dy = [-1,1,0,0]
+# answer = []
+# def bfs(x,y):
+# 	q = deque([(x,y)])
+# 	visited[x][y] = 1
+# 	ans = 1
+# 	while q:
+# 		y,x = q.popleft()
+
+# 		for i in range(4):
+# 			nx = dx[i] + x
+# 			ny = dy[i] + y
+
+# 			if 0<=ny <m and 0<=nx <n:
+# 				if not visited[ny][nx]:
+# 					q.append((ny,nx))
+# 					ans+=1
+# 					visited[ny][nx] = visited[y][x] + 1
+# 	answer.append(ans)
+
+# for i in range(m):
+# 	for j in range(n):
+# 		if not visited[i][j]:
+# 			bfs(i,j)
+# answer.sort()
+# print(len(answer))
+# print(*answer)
+
+# import sys
+# input = sys.stdin.readline
+# sys.setrecursionlimit(1000000)
+# n = int(input())
+# arr = [int(input()) for _ in range(n)]
+
+# def chk(start,end,chk1,chk2):
+# 	for i in range(start+1,end):
+# 		if arr[i]> chk1 or arr[i] > chk2:
+# 			return False
+# 	return True
+# result = 0
+
+# for i in range(n):
+# 	for j in range(i+1,n):
+# 		if chk(i,j,arr[i],arr[j]):
+# 			result+=1
+# print(result)
+
+
+# 오아시스 재결합
+# https://www.acmicpc.net/problem/3015
+# n = int(input())
+# arr = [int(input()) for _ in range(n)]
+
+
+# 괄호
+# https://www.acmicpc.net/problem/9012
+
+# n = int(input())
+# for _ in range(n):
+# 	s = list(input().rstrip())
+# 	if len(s) %2 != 0:
+# 		print('NO')
+# 		continue
+# 	tmp = []
+# 	if s[0] == ')':
+# 		print('NO')
+# 		continue
+# 	for i in range(len(s)):
+# 		if s[i] == '(':
+# 			tmp.append('(')
+# 		else:
+# 			if len(s) <1:
+# 				break
+# 			tmp.pop()
+# 	if len(tmp)>0:
+# 		print('NO')
+# 	else:
+# 		print('YES')
+
+# import sys
+# input = sys.stdin.readline
+
+# n = int(input())
+# for _ in range(n):
+# 	s = input().rstrip()
+# 	tmp = 0
+# 	for string in s:
+# 		if string =='(':
+# 			tmp+=1
+# 		else:
+# 			tmp-=1
+# 		if tmp <0:
+# 			print('NO')
+# 			break
+# 	if tmp >0:
+# 		print('NO')
+# 	elif tmp == 0:
+# 		print('YES')
+
+# 스택
+# https://www.acmicpc.net/problem/10828
+# import sys
+# input = sys.stdin.readline
+# n = int(input())
+# ans = []
+# for _ in range(n):
+# 	p = input().split()
+
+# 	if p[0] == 'push':
+# 		ans.append(p[1])
+# 	elif p[0] == 'top':
+# 		if len(ans) > 0:
+# 			print(ans[-1])
+# 		else:
+# 			print(-1)
+# 	elif p[0] == 'size':
+# 		print(len(ans))
+# 	elif p[0] == 'empty':
+# 		if len(ans) == 0:
+# 			print(1)
+# 		else:
+# 			print(0)
+# 	elif p[0] =='pop':
+# 		if len(ans) > 0:
+# 			print(ans.pop())
+# 		else:
+# 			print(-1)
+
+
+
+# 스택 수열
+# https://www.acmicpc.net/problem/1874
+
+# n = int(input())
+
+# count = 1
+# answer = []
+# stack = []
+# tmp = True
+
+
+# for i in range(n):
+# 	num = int(input())
+
+# 	while count <= num:
+# 		stack.append(count)
+# 		count+=1
+# 		answer.append('+')
+
+# 	if stack[-1] == num:
+# 		stack.pop()
+# 		answer.append('-')
+# 	else:
+# 		tmp = False
+# 		break
+
+
+# if not tmp:
+# 	print('NO')
+# else:
+# 	for s in answer:
+# 		print(s)
+
+
+# 균형잡힌 세상
+# https://www.acmicpc.net/problem/4949
+
+
+# while True:
+# 	str = input()
+# 	check = []
+# 	answer = 'yes'
+# 	if str == '.':
+# 		break
+# 	for s in str:
+# 		if s=='(' or s=='[':
+# 			check.append(s)
+# 		elif s == ')':
+# 			if not len(check):
+# 				answer = 'no'
+# 				break
+# 			else:
+# 				if check.pop(-1) != '(':
+# 					answer = 'no'
+# 					break
+# 		elif s == ']':
+# 			if not len(check):
+# 				answer = 'no'
+# 				break
+# 			else:
+# 				if check.pop() != '[':
+# 					answer = 'no'
+# 					break
+# 		else:
+# 			continue
+# 	if len(check):
+# 		answer = 'no'
+# 	print(answer)
+
+
