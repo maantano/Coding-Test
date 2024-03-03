@@ -1317,17 +1317,6 @@
 # print(ans)
 
 
-
-
-
-
-
-
-
-
-# print('('.isalpha())
-# print('*'.isalpha())
-
 # string = input().rstrip()
 
 # stack = []
@@ -1378,3 +1367,126 @@
 # string = input().rstrip()
 
 # for i in range(len(string)):
+
+
+
+
+# string = input()
+# stack  = []
+
+# res = ''
+
+# for s in string:
+# 	if s.isalpha():
+# 		res+=s
+# 	else:
+# 		if s =='(':
+# 			stack.append(s)
+# 		elif s =='*' or s =='/':
+# 			while stack and (stack[-1] == '*' or stack[-1] == '/'):
+# 				res+= stack.pop()
+# 			stack.append(s)
+# 		elif s =='+' or s =='-':
+# 			while stack and stack[-1] != '(':
+# 				res+= stack.pop()
+# 			stack.append(s)
+# 		elif s == ')':
+# 			while stack and stack[-1] != '(':
+# 				res += stack.pop()
+# 			stack.pop()
+# while stack:
+# 	res += stack.pop()
+# print(res)
+
+
+
+# 창고 다각형
+# https://www.acmicpc.net/problem/2304
+
+# n = int(input())
+
+# arr = [list(map(int,input().split())) for _ in range(n)]
+# arr.sort(key= lambda x : x[0])
+
+# ans = 0
+# stack = [arr[0]]
+
+# for chk in arr[1:]:
+# 	if stack[-1][1] < chk[1]:
+# 		x,y = stack.pop()
+# 		ans += (chk[0] - x) * y
+# 		stack.append([chk[0],chk[1]])
+
+# if stack[0][1] > arr[-1][1]:
+# 	ans += stack[0][1] + (arr[-1][0] - stack[0][0]) * arr[-1][1]
+# else:
+# 	ans += (arr[-1][0] - stack[0][0]) * stack[0][1] + arr[0][1]
+# print(ans)
+
+# [[2, 4], [4, 6], [5, 3], [8, 10], [11, 4], [13, 6], [15, 8]]
+
+# n = int(input())
+
+# lst = []
+# result = 0
+# for i in range(n) :
+# 	a,b = map(int,input().split())
+# 	lst.append([a,b])
+
+# lst.sort()
+
+# i = 0
+# for l in lst :
+# 	if l[1] >result :
+# 		result = l[1]
+# 		idx = i
+# 	i += 1
+# height = lst[0][1]
+
+# for i in range(idx) :
+# 	if height < lst[i+1][1] :
+# 		result += height * (lst[i+1][0]-lst[i][0])
+# 		height = lst[i+1][1]
+# 	else :
+# 		result += height * (lst[i+1][0] - lst[i][0])
+# height = lst[-1][1]
+
+# for i in range(n-1, idx, -1) :
+# 	if height < lst[i-1][1] :
+# 		result += height * (lst[i][0]-lst[i-1][0])
+# 		height = lst[i-1][1]
+# 	else :
+# 		result += height * (lst[i][0] - lst[i-1][0])
+
+# print(result)
+
+# 다시
+# 도키도키 간식드리미
+# https://www.acmicpc.net/problem/12789
+
+# n = int(input())
+# arr = list(map(int,input().split()))
+
+# stack = []
+# chk = 1
+
+# for i in arr:
+# 	stack.append(i)
+# 	while stack and stack[-1] == chk:
+# 		stack.pop()
+# 		chk+=1
+# 	if len(stack) > 1 and stack[-1] > stack[-2]:
+# 		print('Sad')
+# 		exit()
+# if stack:
+# 	print('Sad')
+# else:
+# 	print('Nice')
+
+
+
+
+# 외계인의 기타 연주
+# https://www.acmicpc.net/problem/2841
+
+
