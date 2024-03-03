@@ -909,3 +909,472 @@
 # 	print(answer)
 
 
+
+# 쇠막대기
+# https://www.acmicpc.net/problem/10799
+# import sys
+# input = sys.stdin.readline
+# sys.setrecursionlimit(1000000)
+
+# s = input().rstrip()
+
+# stack = []
+# cnt = 0
+
+# for i in range(len(s)):
+# 	if s[i] == '(':
+# 		stack.append('(')
+# 	else:
+# 		if s[i-1] == '(':
+# 			stack.pop()
+# 			cnt+=len(stack)
+# 		else:
+# 			stack.pop()
+# 			cnt+=1
+# print(cnt)
+
+
+# 적록색약
+# https://www.acmicpc.net/problem/10026
+
+
+# from collections import deque
+# import copy
+# n = int(input())
+
+# arr = [list(input().rstrip()) for _ in range(n)]
+# visited = [[0] * n for _ in range(n)]
+
+
+# dx = [-1,1,0,0]
+# dy = [0,0,-1,1]
+# cnt = 0
+
+# answer = []
+# def bfs(x,y,chk,arr):
+# 	visited[x][y] = 1
+# 	q = deque([(x,y)])
+# 	while q:
+# 		x,y = q.popleft()
+# 		for i in range(4):
+# 			nx = dx[i] + x
+# 			ny = dy[i] + y
+
+# 			if 0 <= nx < n and 0<= ny < n:
+# 				if not visited[nx][ny] and arr[nx][ny] == chk:
+# 					q.append((nx,ny))
+# 					visited[nx][ny] = 1
+
+
+# for i in range(n):
+# 	for j in range(n):
+# 		if not visited[i][j]:
+# 			if arr[i][j] == 'R':
+# 				bfs(i,j,'R',arr)
+# 				cnt+=1
+# 			if arr[i][j] == 'B':
+# 				bfs(i,j,'B',arr)
+# 				cnt+=1
+# 			if arr[i][j] == 'G':
+# 				bfs(i,j,'G',arr)
+# 				cnt+=1
+# answer.append(cnt)
+
+
+# def bfs2(x,y,chk,arr):
+# 	visited[x][y] = 1
+# 	q = deque([(x,y)])
+# 	while q:
+# 		x,y = q.popleft()
+# 		for i in range(4):
+# 			nx = dx[i] + x
+# 			ny = dy[i] + y
+
+# 			if 0 <= nx < n and 0<= ny < n:
+# 				if not visited[nx][ny] and arr[nx][ny] in chk:
+# 					q.append((nx,ny))
+# 					visited[nx][ny] = 1
+
+
+
+# visited = [[0] * n for _ in range(n)]
+# arr2 = copy.deepcopy(arr)
+# cnt2 = 0
+# for i in range(n):
+# 	for j in range(n):
+# 		if not visited[i][j]:
+# 			if arr2[i][j] == 'G' or arr2[i][j] =='R':
+# 				bfs2(i,j,['R','G'],arr2)
+# 				cnt2+=1
+# 			else:
+# 				bfs2(i,j,['B'],arr2)
+# 				cnt2+=1
+# answer.append(cnt2)
+# print(*answer)
+
+
+
+
+
+
+# https://www.acmicpc.net/problem/1935
+# import sys
+# n = int(input())
+# string = input().rstrip()
+# digit = [int(input()) for _ in range(n)]
+
+# stack = []
+# for s in string:
+# 	if s.isalpha():
+# 		stack.append(digit[ord(s) - 65])
+# 	else:
+# 		a = stack.pop()
+# 		b = stack.pop()
+# 		if s == '*':
+# 			stack.append(a*b)
+# 		if s == '+':
+# 			stack.append(a+b)
+# 		if s == '-':
+# 			stack.append(b-a)
+# 		if s == '/':
+# 			tmp = b/a
+# 			stack.append(tmp)
+
+# print('{:.2f}'.format(stack[0]))
+
+
+# https://www.acmicpc.net/problem/5397
+
+
+# 런타임에러
+# import sys
+# input = sys.stdin.readline
+
+# n = int(input())
+# for _ in range(n):
+# 	idx = 0
+# 	string = input().rstrip()
+# 	stack = []
+# 	for s in string:
+# 		if s == '<':
+# 			if idx >0:
+# 				idx-=1
+# 		elif s == '>':
+# 			if idx < len(stack):
+# 				idx+=1
+# 		elif s =='-':
+# 			stack.pop(idx-1)
+# 		else:
+# 			stack.insert(idx,s)
+# 			idx+=1
+# 	print(''.join(stack))
+
+# 정답
+
+# t = int(input())
+
+# for _ in range(t):
+# 	list1 = []
+# 	list2 = []
+
+# 	data = input()
+
+# 	for i in data:
+# 		if i == '-':
+# 			if list1:
+# 				list1.pop()
+# 		elif i == '<':
+# 			if list1:
+# 				list2.append(list1.pop())
+# 		elif i == '>':
+# 			if list2:
+# 				list1.append(list2.pop())
+# 		else:
+# 			list1.append(i)
+# 	list1.extend(reversed(list2))
+# 	print(''.join(list1))
+
+
+# 다시 풀것.
+# 오큰수
+# https://www.acmicpc.net/problem/17298
+
+# n = int(input())
+# arr = list(map(int,input().split()))
+# NGE  = [-1] * n
+# stack = [0]
+# for i in range(1,n):
+# 	while stack and arr[stack[-1]] < arr[i]:
+# 		NGE[stack.pop()] = arr[i]
+# 	stack.append(i)
+# print(*NGE)
+
+
+# 단어 뒤집기 2
+# https://www.acmicpc.net/problem/17413
+# import sys
+# input = sys.stdin.readline
+
+# string = list(input().rstrip())
+
+# s1 = []
+# s2 = []
+# ans = []
+# chk = True
+# for s in string:
+
+# 	if s == '<':
+# 		chk = False
+# 		s2.append('<')
+# 	elif s == '>':
+# 		chk = True
+# 		s2.append('>')
+# 		ans.append(''.join(s2))
+# 		s2 = []
+# 	else:
+# 		if not chk:
+# 			s2.append(s)
+# 		else:
+# 			if s == ' ':
+# 				ans.append(''.join(reversed(s1)))
+# 				s1 = []
+# 			else:
+# 				s1.append(s)
+# if s1:
+# 	ans.append(''.join(reversed(s1)))
+# if s2:
+# 	ans.append(''.join(s2))
+
+# print(*ans)
+
+
+# 다시
+# import sys
+# input = sys.stdin.readline
+
+# string = input().rstrip()
+# word_stack = []
+# tag = False
+# res = ''
+
+
+# for s in string:
+# 	if s == ' ':
+# 		while word_stack:
+# 			res+= word_stack.pop()
+# 		res += s
+
+# 	elif s == '<':
+# 		while word_stack:
+# 			res+= word_stack.pop()
+# 		tag = True
+# 		res += s
+
+# 	elif s == '>':
+# 		tag = False
+# 		res += s
+# 	elif tag:
+# 		res += s
+# 	else:
+# 		word_stack.append(s)
+
+# while word_stack:
+#     res += word_stack.pop()
+# print(res)
+
+
+
+
+# import sys
+# input = sys.stdin.readline
+
+# string = input().rstrip()
+
+# stack = []
+# tag = False
+# res = ''
+
+
+# for s in string:
+# 	if s == '<':
+# 		while stack:
+# 			res+=stack.pop()
+# 		tag = True
+# 		res+=s
+# 	elif s == '>':
+# 		tag = False
+# 		res+=s
+# 	elif s ==' ':
+# 		while stack:
+# 			res+=stack.pop()
+# 		res+=s
+# 	elif tag:
+# 		res+=s
+# 	else:
+# 		stack.append(s)
+
+# while stack:
+# 	res+=stack.pop()
+# print(res)
+
+
+# https://www.acmicpc.net/problem/17298
+
+# n = int(input())
+# arr = list(map(int,input().split()))
+
+# answer = [-1] * n
+# stack = [0]
+# idx = 0
+
+# for i in range(1,n):
+# 	while stack and arr[stack[-1]] < arr[i]:
+# 		chk = stack.pop()
+# 		answer[chk] = arr[i]
+# 	stack.append(i)
+
+# print(*answer)
+
+# 문자열 폭발
+# https://www.acmicpc.net/problem/9935
+
+# import sys
+# input = sys.stdin.readline
+
+# string = input().rstrip()
+# chk=input().rstrip()
+# l = len(chk)
+
+# stack  = [string[i] for i in range(l)]
+# chkArr = []
+
+# for i in range(l,len(string)):
+# 	while ''.join(stack[-l:]) == chk:
+# 		for _ in range(l):
+# 			stack.pop()
+# 	stack.append(string[i])
+
+# res = ''
+
+# if ''.join(stack[-l:]) == chk:
+# 	res = ''.join(stack[:-l])
+# else:
+# 	res = ''.join(stack)
+
+# if res:
+# 	print(res)
+# else:
+# 	print('FRULA')
+
+
+
+# 괄호 끼워넣기
+# https://www.acmicpc.net/problem/11899
+
+# marks = input().rstrip()
+# stack = [marks[0]]
+# cnt = 0
+
+# for m in range(1,len(marks)):
+# 	if marks[m] == ')':
+# 		if stack and stack[-1] == '(':
+# 			stack.pop()
+# 		else:
+# 			cnt+=1
+# 	else:
+# 		stack.append(marks[m])
+# print(cnt+len(stack))
+
+# 다시
+# 후위 표기식
+# https://www.acmicpc.net/problem/1918
+
+# string = input().rstrip()
+# stack = []
+# ans = ''
+
+
+# for s in string:
+# 	if s.isalpha():
+# 		ans += s
+# 	else:
+# 		if s == '(':
+# 			stack.append(s)
+# 		elif s == '*' or s == '/':
+# 			while stack and (stack[-1] == '*' or stack[-1] == '/'):
+# 				ans+=stack.pop()
+# 			stack.append(s)
+# 		elif s == '+' or s == '-':
+# 			while stack and stack[-1] != '(':
+# 				ans += stack.pop()
+# 			stack.append(s)
+# 		elif s == ')':
+# 			while stack and stack[-1] != '(':
+# 				ans += stack.pop()
+# 			stack.pop()
+# while stack:
+# 	ans += stack.pop()
+# print(ans)
+
+
+
+
+
+
+
+
+
+
+# print('('.isalpha())
+# print('*'.isalpha())
+
+# string = input().rstrip()
+
+# stack = []
+# tmp = True
+# ans = []
+# alpha = []
+# mark = []
+# idx = 0
+# res = ''
+# alpha2 = []
+# mark2 = []
+# while idx <= len(string):
+# 	if string[idx] == '(':
+# 		idx+=1
+# 		while string[idx] != ')':
+# 			if string[idx].isalpha():
+# 				alpha.append(string[idx])
+# 			else:
+# 				mark.append(string[idx])
+# 			idx+=1
+# 		res +=''.join(alpha) + ''.join(mark)
+# 		alpha = []
+# 		mark = []
+# 	else:
+# 		if string[idx].isalpha():
+
+# 			alpha2.append(string[idx])
+# 		else:
+# 			mark2.append(string[idx])
+# 		idx+=1
+		# res +=''.join(alpha) + ''.join(mark)
+		# res+= string[idx]
+		# ans.append(string[idx])
+
+
+
+
+
+# for s in string:
+# 	if s == '(':
+# 		while s ==''
+# 		if s.isalpha():
+# 			stack2.append(s)
+# 		else:
+# 			stack3.append(s)
+
+
+# string = input().rstrip()
+
+# for i in range(len(string)):
