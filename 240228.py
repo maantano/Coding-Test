@@ -1490,3 +1490,421 @@
 # https://www.acmicpc.net/problem/2841
 
 
+# n = int(input())
+# arr = [int(input()) for _ in range(n)]
+# ans = [0] * n
+# stack = []
+# chk = 0
+
+# for i in range(n):
+# 	cnt = 0
+# 	chk = i+1
+# 	while chk != n and arr[i] > arr[chk]:
+# 		cnt+=1
+# 		chk+=1
+# 	ans[i] = cnt
+# print(sum(ans))
+
+
+# n = int(input())
+# arr = [int(input()) for _ in range(n)]
+# stack = []
+# cnt = 0
+# for i in range(n):
+# 	while stack and stack[-1] <= arr[i]:
+# 		stack.pop()
+# 	stack.append(arr[i])
+# 	cnt+=len(stack)-1
+# print(cnt)
+
+
+# n = int(input())
+# arr = [int(input()) for _ in range(n)]
+# stack = []
+# cnt = 0
+# for i in range(n):
+# 	while stack and stack[-1] <= arr[i]:
+# 		stack.pop()
+# 	stack.append(arr[i])
+# 	cnt += len(stack) - 1
+# print(cnt)
+
+
+# n = int(input())
+# arr = list(map(int,input().split()))
+# stack = []
+# chk = 1
+# for i in range(n):
+# 	stack.append(arr[i])
+# 	while stack and stack[-1] == chk:
+# 		stack.pop()
+# 		chk+=1
+
+
+# if stack:
+# 	print('Sad')
+# else:
+# 	print('Nice')
+
+
+# ============================================================
+# 다시
+# import sys
+# input = sys.stdin.readline
+# sys.setrecursionlimit(1000000)
+
+# string = input().rstrip()
+# stack = []
+# ans = 1
+# answer =0
+# chk = ''
+# for i in range(len(string)):
+# 	if string[i] == '(':
+# 		stack.append(string[i])
+# 		ans *= 2
+# 	elif string[i] == '[':
+# 		stack.append(string[i])
+# 		ans *= 3
+# 	elif string[i] == ')':
+# 		if not stack or stack[-1] == '[':
+# 			answer = 0
+# 			break
+# 		if string[i-1] == '(':
+# 			answer += ans
+# 		stack.pop()
+# 		ans //= 2
+# 	else:
+# 		if not stack or stack[-1] == "(":
+# 			answer = 0
+# 			break
+# 		if string[i-1] == "[":
+# 			answer += ans
+# 		stack.pop()
+# 		ans //= 3
+
+# if stack:
+# 	print(0)
+# else:
+# 	print(answer)
+
+# 상근이의 여행
+# https://www.acmicpc.net/problem/9372
+# def dfs(idx,cnt):
+# 	chk[idx] = 1
+# 	for n in g[idx]:
+# 		if not chk[n]:
+# 			cnt = dfs(n,cnt+1)
+# 	return cnt
+
+# t = int(input())
+# for _ in range(t):
+# 	n,m = map(int,input().split())
+# 	g = [[] for _ in range(n+1)]
+# 	for i in range(m):
+# 		a,b = map(int,input().split())
+# 		g[a].append(b)
+# 		g[b].append(a)
+# 	chk = [0] * (n+1)
+# 	cnt = dfs(1,0)
+# 	print(cnt)
+
+# 트리 순회
+# https://www.acmicpc.net/problem/1991
+
+# n = int(input())
+# g = [[] for _ in range(n)]
+# g2 = [[] for _ in range(n)]
+# g3 = [[] for _ in range(n)]
+
+# for _ in range(n):
+# 	a,b,c= map(str,input().split())
+# 	if b != '.':
+# 		g[ord(a)-65].append(ord(b)-65)
+# 	if c != '.':
+# 		g[ord(a)-65].append(ord(c)-65)
+
+# print(g)
+
+
+# visited = [0] * n
+# visited2 = [0] * n
+# visited3 = [0] * n
+# ans = []
+# ans2 = []
+# ans3 = []
+# def dfs(idx):
+# 	visited[idx] = 1
+# 	for chk in g[idx]:
+# 		if not visited[chk]:
+# 			ans.append(chk)
+# 			dfs(chk)
+
+# def dfs2(idx):
+# 	visited2[idx] = 1
+# 	for chk in g[idx][::-1]:
+# 		if not visited2[chk]:
+# 			ans2.append(chk)
+# 			dfs2(chk)
+
+# def dfs3(idx):
+# 	visited[idx] = 1
+# 	for chk in g[idx]:
+# 		if not visited[chk]:
+# 			ans.append(chk)
+# 			dfs(chk)
+
+# dfs(0)
+# dfs2(0)
+# print(ans)
+# print(ans2)
+
+
+# 정답
+# n = int(input())
+# d = {}
+# for i in range(n):
+# 	root,left,right = map(str,input().split())
+# 	d[root] = [left,right]
+
+# def a(root):
+# 	if root != '.':
+# 		print(root,end='')
+# 		a(d[root][0])
+# 		a(d[root][1])
+
+# def b(root):
+# 	if root !='.':
+# 		b(d[root][0])
+# 		print(root,end='')
+# 		b(d[root][1])
+
+# def c(root):
+# 	if root !='.':
+# 		c(d[root][0])
+# 		c(d[root][1])
+# 		print(root,end='')
+
+# a('A')
+# print()
+# b('A')
+# print()
+# c('A')
+
+
+# 완전 이진 트리
+# https://www.acmicpc.net/problem/9934
+
+# n = int(input())
+# g = list(map(int,input().split()))
+
+# tree = [[] for _ in range(n)]
+
+
+# def MarkeTree(arr,x):
+# 	mid = len(arr) // 2
+# 	tree[x].append(arr[mid])
+# 	if len(arr) == 1:
+# 		return
+# 	MarkeTree(arr[:mid],x+1)
+# 	MarkeTree(arr[mid+1:],x+1)
+
+# MarkeTree(g,0)
+# for i in range(n):
+# 	print(*tree[i])
+
+# 나무 탈출
+# https://www.acmicpc.net/problem/15900
+# from collections import deque
+
+# n = int(input())
+# g = [[] for _ in range(n+1)]
+# visited = [False for _ in range(n+1)]
+
+
+# for i in range(n):
+# 	a,b = map(int,input().split())
+# 	g[a].append(b)
+# 	g[b].append(a)
+
+# dq = deque([(0,1)])
+# visited[1] = 1
+# d = 0
+
+# while dq:
+# 	now_d,now_node = dq.popleft()
+
+# 	isLeaf = True
+# 	for next_node in g[now_node]:
+# 		if not visited[next_node]:
+# 			isLeaf  = False
+# 			visited[next_node] = 1
+# 			dq.append((now_d+1,next_node))
+# 	if isLeaf:
+# 		d+=now_d
+# if d % 2 == 1:
+# 	print('Yes')
+# else:
+# 	print('No')
+
+# import sys
+# sys.setrecursionlimit(1000000)
+
+# def solution(node):
+# 	global need_move
+
+# 	is_leaf = True
+# 	for next in linked[node]:
+# 		if not distance[next]:
+# 			distance[next] = distance[node]+1
+# 			solution(next)
+# 			is_leaf = False
+
+# 	if is_leaf:
+# 		need_move += distance[node] - 1
+
+# N = int(sys.stdin.readline())
+# linked = [[] for _ in range(N+1)]
+# distance = [0] * (N+1)
+# need_move = 0
+
+# for _ in range(N-1):
+# 	a, b = map(int, sys.stdin.readline().split())
+# 	linked[a].append(b)
+# 	linked[b].append(a)
+
+# distance[1] = 1
+# solution(1)
+
+# if need_move % 2:
+# 	print('Yes')
+# else:
+# 	print('No')
+
+
+
+
+# # ====================================================================================
+
+# import sys
+# from collections import deque
+
+# N = int(sys.stdin.readline().rstrip())
+
+# graph = [[] for _ in range(N+1)]
+# visited = [False for _ in range(N+1)]
+
+# for _ in range(N-1):
+# 	f, s = map(int, sys.stdin.readline().split())
+# 	graph[f].append(s)
+# 	graph[s].append(f)
+
+# dq = deque()
+# dq.append((0, 1))
+# visited[1] = True
+# depth_cnt = 0
+
+# # BFS로 탐색
+# while dq:
+# 	now_depth, now_node = dq.popleft()
+# 	isLeaf = True
+# 	for next_node in graph[now_node]:
+# 		if not visited[next_node]:
+# 			isLeaf = False
+# 			visited[next_node] = True
+# 			dq.append((now_depth+1, next_node))
+# 	if isLeaf:
+# 		depth_cnt += now_depth
+
+# if depth_cnt % 2 == 1:
+# 	print("Yes")
+# else:
+# 	print("No")
+
+# 단절점과 단절선
+# https://www.acmicpc.net/problem/14675
+# import sys
+# input = sys.stdin.readline
+# n = int(input())
+# g = [[]  for i in range(n+1)]
+
+# for i in range(n-1):
+# 	a,b = map(int,input().split())
+# 	g[a].append(b)
+# 	g[b].append(a)
+
+
+# q = int(input())
+
+# for i in range(q):
+# 	a,b = map(int,input().split())
+
+# 	if a == 2:
+# 		print('yes')
+# 	else:
+# 		if len(g[b]) < 2:
+# 			print('no')
+# 		else:
+# 			print('yes')
+
+
+
+
+# 부동산 다툼
+# https://www.acmicpc.net/problem/20364
+
+# import sys
+
+# n,q= map(int,input().split())
+# visited = [0] * (n+1)
+
+# for i in range(q):
+# 	tan = int(input())
+# 	target = tan
+# 	flag = 0
+# 	while target != 1:
+# 		if visited[target] > 0:
+# 			flag = target
+# 		target //= 2
+# 	if flag:
+# 		print(flag)
+# 	else:
+# 		visited[tan] = 1
+# 		print(0)
+
+
+
+# N-Queen
+# https://www.acmicpc.net/problem/9663
+
+# n = int(input())
+
+# def chk(x):
+# 	for i in range(x):
+# 		if arr[i] == arr[x] or abs(x-i) == abs(arr[i]-arr[x]):
+# 			return False
+# 	return True
+
+# def dfs(x):
+# 	global result
+# 	if x == n:
+# 		result+=1
+# 	else:
+# 		for i in range(n):
+# 			arr[x] = i
+# 			if chk(x):
+# 				dfs(x+1)
+
+
+
+
+# arr = [0] * n
+# result = 0
+# dfs(0)
+# print(result)
+
+
+
+
+
+
+
