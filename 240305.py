@@ -1116,26 +1116,7 @@ input = sys.stdin.readline
 # 그르다 김가놈
 # https://www.acmicpc.net/problem/18113
 
-n,k,m = map(int,input().split())
-arr = [int(input()) for _ in range(n)]
 
-start = 1
-end = max(arr)
-cnt = 0
-# for i in arr:
-# 	if i // (2*k):
-# 		cnt+=i-(2*k)
-# if not cnt:
-# 	print(-1)
-# else:
-# 	print(cnt // m)
-
-
-while start<= end:
-	mid = (start+end) // 2
-	for chk in arr:
-
-	if mid
 
 
 
