@@ -1116,6 +1116,167 @@ input = sys.stdin.readline
 # 그르다 김가놈
 # https://www.acmicpc.net/problem/18113
 
+# import sys
+
+# input = sys.stdin.readline
+
+# n, k, m = map(int, input().split())
+# gimbaps = [int(input()) for _ in range(n)]
+
+# left = 1
+# right = max(gimbaps)
+# res = 0
+# rcnt = 0
+
+# def cutting (gimbap, p):
+# 	if gimbap <= k:
+# 		return 0
+# 	elif gimbap < 2*k:
+# 		gimbap -= k
+# 	else:
+# 		gimbap -= k*2
+
+# 	return gimbap//p
+
+# while left <= right:
+# 	mid = (left + right) // 2
+# 	cnt = 0
+# 	for gimbap in gimbaps:
+# 		cnt += cutting(gimbap,mid)
+
+# 	if cnt >= m:
+# 		left = mid + 1
+# 		res = mid
+# 		rcnt = cnt
+# 	else:
+# 		right = mid - 1
+
+# if rcnt >= m:
+# 	print(res)
+# else:
+# 	print(-1)
+
+
+# 넷이 놀기
+# https://www.acmicpc.net/problem/2121
+
+# import sys
+
+# n = int(sys.stdin.readline())
+# a, b = map(int, sys.stdin.readline().split())
+# data = set()
+# for _ in range(n):
+# 	data.add(tuple(map(int, sys.stdin.readline().split())))
+
+# cnt = 0
+# for i in data:
+# 	if (i[0]+a, i[1]) in data and (i[0], i[1]+b) in data and (i[0]+a, i[1]+b) in data:
+# 		cnt += 1
+# print(cnt)
+
+# 제곱근
+# https://www.acmicpc.net/problem/13706
+
+# n = int(input())
+
+# start = 0
+# end = n
+
+# res = 0
+# while start<= end:
+# 	mid = (start+end) // 2
+
+# 	if n >= mid ** 2:
+# 		res = mid
+# 		start = mid +1
+# 	else:
+# 		end = mid -1
+# print(res)
+
+
+# 어두운 굴다리
+# https://www.acmicpc.net/problem/17266
+
+
+# n = int(input())
+# m = int(input())
+# arr = list(map(int,input().split()))
+
+# start = 0
+# end = max(arr)
+
+
+# def bs(li,m):
+# 	if li[1]-li[0] > m:
+# 		return 0
+# 	if li[-1] - li[-2] > m:
+# 		return 0
+
+
+# while start<=end:
+# 	mid = (start+end) // 2
+
+# from bisect import bisect_left
+# from bisect import bisect_right
+
+# n,m = map(int,input().split())
+# arr = list(map(int,input().split()))
+
+# a,b= bisect_left(arr,m),bisect_right(arr,m)
+# print(b-a if b-a else-1)
+
+
+
+# n,m = map(int,input().split())
+# arr = sorted([int(input()) for _ in range(n)])
+
+# s = 0
+# e = arr[-1] - arr[0]
+
+# ans = 0
+# while s <=e:
+# 	mid = (s+e) // 2
+# 	cur = arr[0]
+# 	tmp = 1
+
+# 	for i in range(1,n):
+# 		if arr[i] >= cur + mid:
+# 			tmp+=1
+# 			cur = arr[i]
+# 	if tmp >=m:
+# 		s= mid+1
+# 		ans = mid
+# 	else:
+# 		e = mid - 1
+# print(ans)
+
+# 캠프가는 영식
+# https://www.acmicpc.net/problem/1590
+
+
+n,t = map(int,input().split())
+arr = [list(map(int,input().split())) for _ in range(n)]
+
+res = []
+for i in range(n):
+	a,b,c = arr[i]
+	li = [a+(b*i) for i in range(c)]
+	if li[-1] < t:
+		continue
+	start = 0
+	end = c-1
+	ans = 0
+	while start <= end:
+		mid = (start+end) // 2
+		if li[mid] >= t:
+			end = mid - 1
+			ans = mid
+		else:
+			start = mid + 1
+
+	res.append(li[ans]-t)
+
+print(min(res) if res else -1)
 
 
 
