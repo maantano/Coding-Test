@@ -124,26 +124,28 @@
 # DNA 비밀번호
 # https://www.acmicpc.net/problem/12891
 
-import sys
-input = sys.stdin.readline
-s,p = map(int,input().split())
-string = input().rstrip()
-a,c,g,t = map(int,input().split())
-d = {'A':0,'C':0,'G':0,'T':0}
+# import sys
+# input = sys.stdin.readline
+# s,p = map(int,input().split())
+# string = input().rstrip()
+# a,c,g,t = map(int,input().split())
+# d = {'A':0,'C':0,'G':0,'T':0}
 
-for i in string[:p]:
-	d[i] +=1
+# for i in string[:p]:
+# 	d[i] +=1
 
 
-cnt = 0
-if d['A'] >= a and d['C']>=c and d['G'] >= g and d['T'] >= t:
-	cnt+=1
-start = 0
-end = start+p
+# cnt = 0
+# if d['A'] >= a and d['C']>=c and d['G'] >= g and d['T'] >= t:
+# 	cnt+=1
+# start = 0
+# end = start+p
 
-for i in range(s-p):
-	d[string[start+i]] -=1
-	d[string[end+i]] +=1
-	if d['A'] >= a and d['C']>=c and d['G'] >= g and d['T'] >= t:
-		cnt+=1
-print(cnt)
+# for i in range(s-p):
+# 	d[string[start+i]] -=1
+# 	d[string[end+i]] +=1
+# 	if d['A'] >= a and d['C']>=c and d['G'] >= g and d['T'] >= t:
+# 		cnt+=1
+# print(cnt)
+
+
