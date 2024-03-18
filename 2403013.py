@@ -319,7 +319,24 @@
 # 	else:
 # 		dp[1] += 1
 
+# import sys
+# input = sys.stdin.readline
+# d,k = map(int,input().split())
+# dp = [0] * d
 
+# dp[0],dp[1] = 1,1
+
+# while True:
+# 	for i in range(2,d):
+# 		dp[i] = dp[i-1]+dp[i-2]
+# 	if dp[d-1] == k:
+# 		print(dp[0],dp[1],sep='\n')
+# 		break
+# 	elif dp[-1] > k:
+# 		dp[0] += 1
+# 		dp[1] = dp[0]
+# 	else:
+# 		dp[1] += 1
 
 
 
@@ -343,5 +360,111 @@
 
 # 자두나무
 # https://www.acmicpc.net/problem/2240
+
+# from sys import stdin
+
+# T, W = map(int, stdin.readline().split())
+# lst = [0]
+# dp = [[0]*(W+1) for _ in range(T+1)]
+# for _ in range(T):
+# 	lst.append(int(stdin.readline()))
+
+# for i in range(1, T+1):
+# 	if lst[i] == 1:
+# 		dp[i][0] = dp[i-1][0]+1
+# 	else:
+# 		dp[i][0] = dp[i-1][0]
+
+# 	for j in range(1, W+1):
+# 		if lst[i] == 2 and j % 2 == 1:
+# 			dp[i][j] = max(dp[i-1][j-1], dp[i-1][j]) + 1
+# 		elif lst[i] == 1 and j % 2 == 0:
+# 			dp[i][j] = max(dp[i-1][j-1], dp[i-1][j]) + 1
+# 		else:
+# 			dp[i][j] = max(dp[i-1][j-1], dp[i-1][j])
+
+# print(max(dp[-1]))
+
+# import sys
+# input = sys.stdin.readline
+
+# t,w = map(int,input().split())
+# dp = [[0]*(w+1) for _ in range(t+1)]
+# arr = [0]+[int(input()) for _ in range(t)]
+
+# for i in range(1,t+1):
+# 	if arr[i] == 1:
+# 		dp[i][0] = dp[i-1][0] + 1
+# 	else:
+# 		dp[i][0] = dp[i-1][0]
+
+# 	for j in range(1,w+1):
+# 		if arr[i] == 2 and j %2 ==1:
+# 			dp[i][j] = max(dp[i-1][j-1],dp[i-1][j])+1
+# 		elif arr[i] == 1 and j %2 ==0:
+# 			dp[i][j] = max(dp[i-1][j-1],dp[i-1][j])+1
+# 		else:
+# 			dp[i][j] = max(dp[i-1][j-1],dp[i-1][j])
+# print(max(dp[-1]))
+
+
+
+# 알약
+# https://www.acmicpc.net/problem/4811
+
+# arr = [[0]*31 for _ in range(31)]
+
+# for i in range(1,31):
+# 	arr[0][i] = 1
+# for i in range(1,31):
+# 	for j in range(i,31):
+# 		arr[i][j] += arr[i-1][j] + arr[i][j-1]
+# while True:
+# 	chk = int(input())
+# 	if not chk:
+# 		break
+# 	print(arr[chk][chk])
+
+
+# LCS 3
+# https://www.acmicpc.net/problem/1958
+
+# l = [input().rstrip() for _ in range(3)]
+# w1,w2,w3 = l
+# l1,l2,l3 = len(w1),len(w2),len(w3)
+# dp = [[[0]*(l1+1) for _ in range(l2+1)] for _ in range(l3+1)]
+
+# for k in range(1,l3+1):
+# 	for j in range(1,l2+1):
+# 		for i in range(1,l1+1):
+# 			if w1[i-1] == w2[j-1] == w3[k-1]:
+# 				dp[k][j][i] = dp[k-1][j-1][i-1] + 1
+# 			else:
+# 				dp[k][j][i] = max(dp[k-1][j][i],dp[k][j-1][i],dp[k][j][i-1])
+# print(dp[-1][-1][-1])
+
+
+# 1, 2, 3 더하기 4
+# https://www.acmicpc.net/problem/15989
+
+
+# t = int(input())
+# arr = [int(input()) for _ in range(t)]
+# dp = [0]*10001
+
+# for i in range(1,10001):
+# 	dp[i] = dp[i-1]
+
+# dp[1] = 1
+# dp[2] = 2
+# dp[3] = 2
+
+# 1 => 1 = 1
+# 2 => 1+1 ,2 = 2
+# 3 => 1+1+1, 1+2(2+1) , 3  = 3
+# 4 => 1+1+1+1,1+3(3+1),2+2,+1+2+1(1+1+2,2+1+1),4 = 5
+# 5 => 1+1+1+1+1,1+1+1+2,1+1+3,2+3,1+2+2, = 5
+# 6 => 1+1+1+1+1+1,1+1+1+1+2,1+1+1+3,1+1+2+2,1+2+3,2+2+2, 3+3 = 8
+
 
 
